@@ -1,0 +1,75 @@
+.fpPage {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0C0B0F;
+  padding: 2rem 1.25rem;
+}
+
+.fpBg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.fpbNoise { position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E"); opacity: 0.5; }
+.fpbGlow { position: absolute; border-radius: 50%; filter: blur(90px); }
+.fpbGlow1 { width: 500px; height: 500px; top: -150px; left: -100px; background: radial-gradient(circle, rgba(99,102,241,0.14) 0%, transparent 70%); }
+.fpbGlow2 { width: 400px; height: 400px; bottom: -100px; right: -100px; background: radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 70%); }
+
+.fpWrap {
+  position: relative; z-index: 1; width: 100%; max-width: 420px;
+  display: flex; flex-direction: column; gap: 1.25rem;
+  animation: fp-in 0.55s cubic-bezier(0.22,1,0.36,1) both;
+}
+@keyframes fp-in { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.fpBack {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font-body); font-size: 13px; font-weight: 500;
+  color: rgba(245,244,242,0.35); text-decoration: none; width: fit-content; transition: color 0.18s;
+}
+.fpBack:hover { color: rgba(245,244,242,0.70); }
+.fpBack svg { transition: transform 0.22s var(--ease-spring); }
+.fpBack:hover svg { transform: translateX(-3px); }
+
+.fpCard {
+  background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 28px; padding: 2.25rem 2rem;
+  backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.3), 0 32px 64px rgba(0,0,0,0.40), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+.fpcHeader { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 1.75rem; }
+.fpcLogo { width: 52px; height: 52px; border-radius: 14px; background: linear-gradient(140deg, #6366F1 0%, #8B5CF6 60%, #A78BFA 100%); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; box-shadow: 0 6px 24px rgba(99,102,241,0.40); }
+.fpcTitle { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700; letter-spacing: -0.03em; color: rgba(245,244,242,0.93); margin-bottom: 0.4rem; }
+.fpcSub { font-family: var(--font-body); font-size: 13.5px; color: rgba(245,244,242,0.38); }
+
+.fpcField { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.fpcLabel { font-family: var(--font-body); font-size: 12px; font-weight: 600; color: rgba(245,244,242,0.45); letter-spacing: 0.04em; }
+.fpcInputWrap { display: flex; align-items: center; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09); border-radius: 12px; transition: border-color 0.18s, box-shadow 0.18s; }
+.fpcInputWrap:focus-within { border-color: rgba(99,102,241,0.55); box-shadow: 0 0 0 3px rgba(99,102,241,0.12); }
+.fpcInputWrapError { border-color: rgba(239,68,68,0.50) !important; box-shadow: 0 0 0 3px rgba(239,68,68,0.10) !important; }
+.fpcIcon { flex-shrink: 0; margin-left: 13px; color: rgba(245,244,242,0.25); pointer-events: none; }
+.fpcInput { flex: 1; height: 46px; padding: 0 12px; background: transparent; border: none; outline: none; font-family: var(--font-body); font-size: 14px; color: rgba(245,244,242,0.88); }
+.fpcInput::placeholder { color: rgba(245,244,242,0.22); }
+.fpcError { font-family: var(--font-body); font-size: 11.5px; color: rgba(248,113,113,0.90); margin: 0; }
+
+.fpcAuthError { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 10px; background: rgba(239,68,68,0.10); border: 1px solid rgba(239,68,68,0.20); font-family: var(--font-body); font-size: 13px; color: rgba(248,113,113,0.90); margin-bottom: 14px; }
+
+.fpcSubmit { width: 100%; height: 50px; border-radius: 14px; border: none; background: linear-gradient(135deg, #6366F1, #8B5CF6); color: #fff; font-family: var(--font-body); font-size: 15px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: transform 0.20s var(--ease-spring), box-shadow 0.22s, opacity 0.18s; box-shadow: 0 4px 20px rgba(99,102,241,0.40); }
+.fpcSubmit:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(99,102,241,0.50); }
+.fpcSubmit:active:not(:disabled) { transform: scale(0.98); }
+.fpcSubmit:disabled { opacity: 0.50; cursor: not-allowed; }
+.fpcSpinner { display: block; width: 16px; height: 16px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.30); border-top-color: #fff; animation: spin 0.7s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Success */
+.fpSuccess { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0; }
+.fpsIcon { margin-bottom: 1.25rem; }
+.fpsTitle { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; letter-spacing: -0.03em; color: rgba(245,244,242,0.92); margin-bottom: 0.75rem; }
+.fpsDesc { font-family: var(--font-body); font-size: 14px; color: rgba(245,244,242,0.45); line-height: 1.7; margin-bottom: 0.75rem; }
+.fpsDesc strong { color: rgba(129,140,248,0.80); font-weight: 600; }
+.fpsHint { font-family: var(--font-body); font-size: 12.5px; color: rgba(245,244,242,0.28); line-height: 1.7; margin-bottom: 1.25rem; }
+.fpsResend { background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.25); color: rgba(129,140,248,0.80); font-family: var(--font-body); font-size: 13px; font-weight: 600; padding: 9px 20px; border-radius: 10px; cursor: pointer; transition: background 0.18s, color 0.18s; }
+.fpsResend:hover:not(:disabled) { background: rgba(99,102,241,0.20); color: rgba(167,172,255,0.95); }
+.fpsResend:disabled { opacity: 0.45; cursor: not-allowed; }
+.fpsBackLogin { display: inline-block; margin-top: 1rem; font-family: var(--font-body); font-size: 13px; color: rgba(245,244,242,0.30); text-decoration: none; transition: color 0.15s; }
+.fpsBackLogin:hover { color: rgba(245,244,242,0.65); }

@@ -1,26 +1,552 @@
+/* ==========================================
+   BG-Zero — Global Design System
+   Aesthetic: Swiss Minimalism + Aurora Mesh
+   ========================================== */
+
+/* Fonts are loaded via <link> in layout.tsx head */
+
 @import "tailwindcss";
 
+/* ==========================================
+   CSS Custom Properties — Design Tokens
+   ========================================== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Base colors — warm white */
+  --bg-primary: #FAFAF9;
+  --bg-secondary: #F5F5F4;
+  --bg-canvas: #FFFFFF;
+  --bg-tertiary: #EFEDE9;
+
+  /* Text */
+  --text-primary: #1C1917;
+  --text-secondary: #78716C;
+  --text-tertiary: #A8A29E;
+  --text-inverse: #FAFAF9;
+
+  /* Accent — Indigo */
+  --accent-primary: #6366F1;
+  --accent-primary-hover: #4F46E5;
+  --accent-primary-light: #EEF2FF;
+  --accent-primary-muted: rgba(99, 102, 241, 0.12);
+
+  /* Secondary — Coral Orange */
+  --accent-secondary: #F97316;
+  --accent-secondary-light: #FFF7ED;
+  --accent-secondary-muted: rgba(249, 115, 22, 0.12);
+
+  /* States */
+  --color-success: #22C55E;
+  --color-success-light: #DCFCE7;
+  --color-error: #EF4444;
+  --color-error-light: #FEE2E2;
+  --color-warning: #F59E0B;
+  --color-mask: rgba(34, 197, 94, 0.28);
+  --color-mask-stroke: #16A34A;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.09), 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.12), 0 8px 24px rgba(0, 0, 0, 0.06);
+  --shadow-accent: 0 4px 16px rgba(99, 102, 241, 0.28);
+
+  /* Radius */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  /* Typography */
+  --font-heading: 'Clash Display', 'SF Pro Display', system-ui, sans-serif;
+  --font-body: 'Satoshi', 'SF Pro Text', system-ui, sans-serif;
+
+  /* Timing */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+
+  /* Aurora gradient — Hero background */
+  --gradient-aurora:
+    radial-gradient(ellipse at 15% 25%, rgba(196, 181, 253, 0.55) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 15%, rgba(147, 197, 253, 0.5) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 85%, rgba(253, 230, 138, 0.45) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 65%, rgba(167, 243, 208, 0.35) 0%, transparent 45%),
+    #FAFAF9;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ==========================================
+   Base Reset & Global
+   ========================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* ==========================================
+   Typography Scale
+   ========================================== */
+.font-heading { font-family: var(--font-heading); }
+.font-body { font-family: var(--font-body); }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* ==========================================
+   Aurora Mesh Hero
+   ========================================== */
+.aurora-bg {
+  background: var(--gradient-aurora);
+  position: relative;
+  overflow: hidden;
+}
+
+.aurora-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Aurora breathing animation */
+@keyframes aurora-breathe-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.55; }
+  50% { transform: translate(3%, 2%) scale(1.06); opacity: 0.75; }
+}
+@keyframes aurora-breathe-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+  33% { transform: translate(-2%, 3%) scale(1.04); opacity: 0.7; }
+  66% { transform: translate(1%, -2%) scale(0.98); opacity: 0.6; }
+}
+@keyframes aurora-breathe-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.45; }
+  50% { transform: translate(-3%, -2%) scale(1.08); opacity: 0.65; }
+}
+
+.aurora-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+}
+.aurora-orb-1 {
+  width: 55%;
+  height: 65%;
+  top: -10%;
+  left: -8%;
+  background: radial-gradient(circle, rgba(196, 181, 253, 0.7), transparent 70%);
+  animation: aurora-breathe-1 8s ease-in-out infinite;
+}
+.aurora-orb-2 {
+  width: 50%;
+  height: 55%;
+  top: -5%;
+  right: -5%;
+  background: radial-gradient(circle, rgba(147, 197, 253, 0.65), transparent 70%);
+  animation: aurora-breathe-2 10s ease-in-out infinite;
+}
+.aurora-orb-3 {
+  width: 55%;
+  height: 55%;
+  bottom: -10%;
+  left: 20%;
+  background: radial-gradient(circle, rgba(253, 230, 138, 0.6), transparent 70%);
+  animation: aurora-breathe-3 12s ease-in-out infinite;
+}
+.aurora-orb-4 {
+  width: 35%;
+  height: 40%;
+  bottom: 5%;
+  right: 10%;
+  background: radial-gradient(circle, rgba(167, 243, 208, 0.5), transparent 70%);
+  animation: aurora-breathe-1 9s ease-in-out infinite reverse;
+}
+
+/* ==========================================
+   Card Component
+   ========================================== */
+.card {
+  background: var(--bg-canvas);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(28, 25, 23, 0.07);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--duration-normal) var(--ease-spring),
+              box-shadow var(--duration-normal) var(--ease-smooth);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-interactive {
+  cursor: pointer;
+}
+
+/* ==========================================
+   Button System
+   ========================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition:
+    background var(--duration-fast) var(--ease-smooth),
+    color var(--duration-fast) var(--ease-smooth),
+    transform var(--duration-fast) var(--ease-spring),
+    box-shadow var(--duration-fast) var(--ease-smooth);
+  white-space: nowrap;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+.btn:active { transform: scale(0.97); }
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none !important;
+}
+.btn:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 3px;
+}
+
+/* Primary */
+.btn-primary {
+  background: var(--accent-primary);
+  color: #fff;
+  box-shadow: var(--shadow-accent);
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--accent-primary-hover);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.38);
+}
+
+/* Secondary */
+.btn-secondary {
+  background: var(--bg-canvas);
+  color: var(--text-primary);
+  border: 1.5px solid rgba(28, 25, 23, 0.12);
+  box-shadow: var(--shadow-xs);
+}
+.btn-secondary:hover:not(:disabled) {
+  background: var(--bg-secondary);
+  border-color: rgba(28, 25, 23, 0.2);
+}
+
+/* Ghost */
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+}
+.btn-ghost:hover:not(:disabled) {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+/* Danger */
+.btn-danger {
+  background: var(--color-error);
+  color: #fff;
+}
+.btn-danger:hover:not(:disabled) {
+  background: #DC2626;
+}
+
+/* Sizes */
+.btn-sm  { height: 32px; padding: 0 12px; font-size: 13px; }
+.btn-md  { height: 40px; padding: 0 18px; font-size: 14px; }
+.btn-lg  { height: 48px; padding: 0 24px; font-size: 15px; }
+.btn-xl  { height: 56px; padding: 0 32px; font-size: 16px; letter-spacing: -0.01em; }
+
+/* ==========================================
+   Progress Bar
+   ========================================== */
+@keyframes progress-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.progress-bar {
+  height: 6px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: linear-gradient(90deg, #6366F1, #8B5CF6, #6366F1);
+  background-size: 200% auto;
+  animation: progress-shimmer 2s linear infinite;
+  transition: width 0.3s var(--ease-smooth);
+}
+
+/* ==========================================
+   Checkerboard transparent preview
+   ========================================== */
+.checkerboard {
+  background-image:
+    linear-gradient(45deg, #E5E5E5 25%, transparent 25%),
+    linear-gradient(-45deg, #E5E5E5 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #E5E5E5 75%),
+    linear-gradient(-45deg, transparent 75%, #E5E5E5 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  background-color: #FFFFFF;
+}
+
+.checkerboard-sm {
+  background-size: 12px 12px;
+  background-position: 0 0, 0 6px, 6px -6px, -6px 0px;
+}
+
+/* ==========================================
+   Upload Zone
+   ========================================== */
+.upload-zone {
+  border: 2px dashed rgba(28, 25, 23, 0.14);
+  border-radius: var(--radius-lg);
+  transition:
+    border-color var(--duration-normal) var(--ease-smooth),
+    background var(--duration-normal) var(--ease-smooth);
+}
+.upload-zone:hover,
+.upload-zone.drag-over {
+  border-color: var(--accent-primary);
+  background: var(--accent-primary-muted);
+}
+
+/* ==========================================
+   Tag/Badge
+   ========================================== */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  font-family: var(--font-body);
+}
+.tag-indigo { background: var(--accent-primary-light); color: var(--accent-primary); }
+.tag-orange { background: var(--accent-secondary-light); color: var(--accent-secondary); }
+.tag-green  { background: var(--color-success-light); color: #15803D; }
+.tag-gray   { background: var(--bg-secondary); color: var(--text-secondary); border: 1px solid rgba(0,0,0,0.06); }
+
+/* ==========================================
+   Glassmorphism Nav
+   ========================================== */
+.glass-nav {
+  background: rgba(250, 250, 249, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(28, 25, 23, 0.07);
+}
+
+/* ==========================================
+   Divider
+   ========================================== */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(28, 25, 23, 0.1) 20%, rgba(28, 25, 23, 0.1) 80%, transparent);
+}
+
+/* ==========================================
+   Page Enter Animations
+   ========================================== */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-up  { animation: fade-up  0.5s var(--ease-out) both; }
+.animate-fade-in  { animation: fade-in  0.4s var(--ease-out) both; }
+.animate-scale-in { animation: scale-in 0.35s var(--ease-spring) both; }
+
+.delay-100 { animation-delay: 100ms; }
+.delay-150 { animation-delay: 150ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* ==========================================
+   Tooltip
+   ========================================== */
+.tooltip-wrapper { position: relative; }
+.tooltip-wrapper .tooltip {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  background: var(--text-primary);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: var(--radius-xs);
+  font-size: 11px;
+  font-family: var(--font-body);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-smooth);
+  z-index: 50;
+}
+.tooltip-wrapper:hover .tooltip { opacity: 1; }
+
+/* ==========================================
+   Focus Visible
+   ========================================== */
+:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 3px;
+}
+
+/* ==========================================
+   Scrollbar
+   ========================================== */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(28, 25, 23, 0.15); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(28, 25, 23, 0.3); }
+
+/* ==========================================
+   Reduced motion
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================
+   Modal Overlay
+   ========================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 25, 23, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 16px;
+}
+.modal-box {
+  background: var(--bg-canvas);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  max-width: 460px;
+  width: 100%;
+  padding: 32px;
+  animation: scale-in 0.25s var(--ease-spring) both;
+}
+
+/* ==========================================
+   Input & Slider
+   ========================================== */
+.input {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  border: 1.5px solid rgba(28, 25, 23, 0.12);
+  border-radius: var(--radius-sm);
+  background: var(--bg-canvas);
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-primary);
+  transition: border-color var(--duration-fast), box-shadow var(--duration-fast);
+  outline: none;
+}
+.input:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px var(--accent-primary-muted);
+}
+
+/* Range slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-full);
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  background: var(--accent-primary);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 1px 6px rgba(99, 102, 241, 0.4);
+  transition: transform var(--duration-fast) var(--ease-spring);
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  background: var(--accent-primary);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+/* ==========================================
+   Responsive
+   ========================================== */
+@media (max-width: 768px) {
+  :root {
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+  }
 }

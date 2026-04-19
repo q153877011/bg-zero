@@ -1,0 +1,167 @@
+.adminPage {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+/* Header */
+.adminHeader {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;
+}
+.adminHeaderLeft { display: flex; flex-direction: column; gap: 0.5rem; }
+.adminBack {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-body); font-size: 12px; font-weight: 500;
+  color: var(--text-tertiary); text-decoration: none; transition: color 0.15s;
+}
+.adminBack:hover { color: var(--text-secondary); }
+.adminTitle {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700;
+  color: var(--text-primary); letter-spacing: -0.03em;
+}
+.adminTitleIcon { color: var(--accent-primary); }
+
+/* Period selector */
+.adminPeriod {
+  display: flex; gap: 4px;
+  background: var(--bg-secondary); border: 1px solid rgba(28,25,23,0.06);
+  border-radius: 10px; padding: 3px;
+}
+.periodBtn {
+  padding: 6px 14px; border-radius: 8px; border: none;
+  background: transparent; font-family: var(--font-body);
+  font-size: 12px; font-weight: 600; color: var(--text-secondary);
+  cursor: pointer; transition: all 0.15s ease;
+}
+.periodBtn:hover { color: var(--text-primary); }
+.periodBtnActive {
+  background: var(--bg-canvas); color: var(--accent-primary);
+  box-shadow: var(--shadow-xs);
+}
+
+/* Loading / Error */
+.adminLoading {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; padding: 4rem 0;
+  font-family: var(--font-body); font-size: 14px; color: var(--text-secondary);
+}
+.adminSpinner {
+  width: 20px; height: 20px; border-radius: 50%;
+  border: 2px solid rgba(99,102,241,0.2);
+  border-top-color: var(--accent-primary);
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.adminError {
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px; padding: 2rem;
+  background: var(--color-error-light); border: 1px solid rgba(239,68,68,0.15);
+  border-radius: 12px; font-family: var(--font-body); font-size: 13px; color: var(--color-error);
+}
+
+/* Stat cards */
+.statCards {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1rem; margin-bottom: 1.5rem;
+}
+.statCard {
+  display: flex; align-items: center; gap: 14px;
+  padding: 1.25rem 1rem; background: var(--bg-canvas);
+  border: 1px solid rgba(28,25,23,0.07); border-radius: 16px;
+  transition: box-shadow 0.2s, transform 0.2s var(--ease-spring);
+}
+.statCard:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.scIcon {
+  width: 42px; height: 42px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.scIconBlue { background: rgba(59,130,246,0.10); color: #3B82F6; }
+.scIconGreen { background: rgba(34,197,94,0.10); color: #22C55E; }
+.scIconIndigo { background: var(--accent-primary-muted); color: var(--accent-primary); }
+.scIconRed { background: rgba(239,68,68,0.10); color: var(--color-error); }
+.scBody { display: flex; flex-direction: column; gap: 2px; }
+.scValue {
+  font-family: var(--font-heading); font-size: 1.4rem; font-weight: 700;
+  color: var(--text-primary); letter-spacing: -0.02em; line-height: 1;
+}
+.scLabel {
+  font-family: var(--font-body); font-size: 11.5px;
+  color: var(--text-tertiary); font-weight: 500;
+}
+
+/* Charts row */
+.chartsRow {
+  display: grid; grid-template-columns: 2fr 1fr;
+  gap: 1rem; margin-bottom: 1.5rem;
+}
+.chartCard {
+  background: var(--bg-canvas); border: 1px solid rgba(28,25,23,0.07);
+  border-radius: 16px; padding: 1.25rem;
+}
+.ccHeader { display: flex; align-items: center; gap: 6px; margin-bottom: 1rem; }
+.ccHeaderIcon { color: var(--text-tertiary); }
+.ccTitle {
+  font-family: var(--font-body); font-size: 12px; font-weight: 700;
+  color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.06em;
+}
+.ccCanvasWrap { height: 220px; position: relative; }
+.ccCanvasWrapDonut { height: 160px; }
+
+/* Engine legend */
+.engineLegend { margin-top: 1rem; display: flex; flex-direction: column; gap: 6px; }
+.elItem { display: flex; align-items: center; gap: 8px; font-family: var(--font-body); font-size: 12px; }
+.elDot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.elName { color: var(--text-secondary); flex: 1; }
+.elCount { font-weight: 600; color: var(--text-primary); font-variant-numeric: tabular-nums; }
+
+/* Bottom row */
+.bottomRow {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1rem; margin-bottom: 1.5rem;
+}
+
+/* Event list */
+.eventList { display: flex; flex-direction: column; gap: 8px; }
+.evItem { display: flex; align-items: center; gap: 10px; }
+.evName {
+  font-family: var(--font-body); font-size: 12px; color: var(--text-secondary);
+  min-width: 110px; flex-shrink: 0; font-variant-numeric: tabular-nums;
+}
+.evBarWrap {
+  flex: 1; height: 6px; background: rgba(28,25,23,0.05);
+  border-radius: 99px; overflow: hidden;
+}
+.evBar {
+  height: 100%; background: var(--accent-primary);
+  border-radius: 99px; transition: width 0.4s ease; min-width: 2px;
+}
+.evBarOrange { background: var(--accent-secondary); }
+.evCount {
+  font-family: var(--font-body); font-size: 12px; font-weight: 600;
+  color: var(--text-primary); min-width: 48px; text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Events link */
+.adminEventsLink {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 18px; border-radius: 10px;
+  background: var(--accent-primary-light); color: var(--accent-primary);
+  font-family: var(--font-body); font-size: 13px; font-weight: 600;
+  text-decoration: none; transition: background 0.15s, transform 0.15s var(--ease-spring);
+}
+.adminEventsLink:hover { background: var(--accent-primary-muted); transform: translateX(2px); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .statCards { grid-template-columns: repeat(2, 1fr); }
+  .chartsRow { grid-template-columns: 1fr; }
+  .bottomRow { grid-template-columns: 1fr; }
+  .adminHeader { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 480px) {
+  .statCards { grid-template-columns: 1fr; }
+}

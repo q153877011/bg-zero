@@ -1,0 +1,16 @@
+.fade {
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.upload-zone {
+  /* base styles if needed */
+}
+
+.drag-over {
+  /* visual feedback for drag over state */
+}

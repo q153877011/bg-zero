@@ -1,0 +1,23 @@
+.slideDown {
+  transition: all 0.25s var(--ease-smooth, cubic-bezier(0.4, 0, 0.2, 1));
+  overflow: hidden;
+}
+
+.slideDownHidden {
+  opacity: 0;
+  max-height: 0;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.engineGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+@media (max-width: 600px) {
+  .engineGrid {
+    grid-template-columns: 1fr;
+  }
+}
