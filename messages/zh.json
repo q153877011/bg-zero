@@ -20,16 +20,16 @@
     "openSourceLicense": "开源许可",
     "defaultEngine": "默认引擎",
     "footerTagline": "AI 驱动的背景去除工具\n纯浏览器本地运算，零数据上传",
-    "footerMotto": "Made with care · 本地优先",
+    "footerMotto": "用心打造 · 本地优先",
     "hidePassword": "隐藏密码",
     "showPassword": "显示密码",
     "loginLabel": "登录账号"
   },
   "home": {
     "badge": "AI 背景去除 · 纯本地运行 · 完全免费",
-    "titleRemove": "Remove",
-    "titleBackgrounds": "back\u200Bgrounds",
-    "titleInstantly": "instantly.",
+    "titleRemove": "一键",
+    "titleBackgrounds": "去除",
+    "titleInstantly": "背景。",
     "lead": "三种 AI 引擎可选，一键抠图或手动精修。\n图片不离开你的浏览器，100% 本地处理。",
     "ctaStart": "免费开始使用",
     "ctaManual": "手动精修",
@@ -130,7 +130,24 @@
     "rembgIsnetAnime": "动漫专用",
     "rembgU2net": "通用完整版",
     "ccByNcTitle": "RMBG-1.4 使用 CC BY-NC 4.0 许可，仅供非商业用途",
-    "requiresWebGPUTitle": "需要支持 WebGPU 的 Chrome 113+ 浏览器"
+    "requiresWebGPUTitle": "需要支持 WebGPU 的 Chrome 113+ 浏览器",
+    "loadingImgly": "正在加载 imgly 引擎...",
+    "loadingTransformers": "正在加载 Transformers.js 引擎...",
+    "loadingTransformersModel": "正在下载 RMBG-1.4 模型（~176MB）... 第一次加载可能需要几分钟，请耐心等待",
+    "loadingRembg": "正在加载 rembg-web ({model})...",
+    "errNoOffscreenCanvas": "您的浏览器不支持 OffscreenCanvas，无法使用 Transformers.js 引擎。请改用 imgly 或 rembg-web。",
+    "errUnknown": "未知错误，请重试。",
+    "errWebGPU": "当前浏览器不支持 WebGPU，已自动切换至 CPU 模式。若仍报错，请使用 imgly 引擎。",
+    "errSharedArrayBuffer": "浏览器安全限制阻止了多线程加速。请确认页面已启用 COOP/COEP 响应头，或改用其他引擎。",
+    "errModelDownload": "模型下载失败，请检查网络连接后重试。",
+    "errOutOfMemory": "内存不足，请关闭其他标签页后重试，或上传较小的图片。",
+    "errEngineLoad": "引擎加载失败，请重试或切换其他引擎。",
+    "featureList1": "AI 驱动的自动背景去除",
+    "featureList2": "手动取色 + Flood Fill 精准去除",
+    "featureList3": "100% 浏览器本地处理",
+    "featureList4": "无水印、不上传、无需登录",
+    "featureList5": "三种 AI 引擎：imgly、Transformers.js、rembg-web",
+    "featureList6": "透明 PNG 导出"
   },
   "manual": {
     "pageTitle": "手动背景去除",
@@ -182,7 +199,7 @@
     "dividerEmail": "或使用邮箱登录",
     "emailLabel": "邮箱",
     "passwordLabel": "密码",
-    "loginBtn": "登 录",
+    "loginBtn": "登录",
     "loginLoading": "登录中…",
     "noAccount": "还没有账号？",
     "register": "注册",
@@ -299,7 +316,7 @@
     "noEvents": "暂无事件数据",
     "eventsLoading": "加载事件数据…",
     "eventsLoadError": "加载事件数据失败",
-    "guest": "Guest",
+    "guest": "访客",
     "tolerance": "容差",
     "items": "{total} 条",
     "pagination": "{page} / {totalPages}"
@@ -312,6 +329,10 @@
     "clickToSelect": "点击选择",
     "maxSizePaste": "最大 25MB · Ctrl+V 粘贴图片",
     "ariaLabel": "上传图片区域，点击或拖拽图片到此处",
+    "errUnsupportedFormat": "不支持的格式：{format}。请上传 JPG、PNG、WebP 或 BMP。",
+    "errFileTooLarge": "文件过大（{size}MB），请上传小于 {max}MB 的图片。",
+    "errTooHighRes": "图片分辨率过高（{width}×{height}，{mp}MP），请上传不超过 16MP 的图片。",
+    "errReadFailed": "读取图片失败，请重试。",
     "originalLabel": "原图",
     "resultLabel": "结果",
     "noImage": "暂无图片",
@@ -319,5 +340,53 @@
     "originalAlt": "原始图片",
     "resultAlt": "处理结果",
     "pngTransparent": "PNG · 透明背景"
+  },
+  "seo": {
+    "homeTitle": "BG-Zero — 免费 AI 背景去除工具 | 100% 本地处理",
+    "homeDescription": "使用 AI 一键去除图片背景。三种引擎可选，100% 浏览器本地处理，不上传图片，无水印。完全免费且保护隐私的在线抠图工具。",
+    "autoTitle": "AI 自动背景擦除 — 一键去除 | BG-Zero",
+    "autoDescription": "AI 驱动的一键背景去除。支持 imgly、Transformers.js、rembg-web 三种引擎，完全在浏览器本地运行，图片不离开你的设备。",
+    "manualTitle": "手动背景去除 — 取色精准擦除 | BG-Zero",
+    "manualDescription": "使用取色器和 Flood Fill 算法精准去除背景。蒙版画笔保护主体，容差滑块控制精度，支持撤销/重做。",
+    "loginTitle": "登录 — BG-Zero",
+    "loginDescription": "登录 BG-Zero 开始去除背景。",
+    "registerTitle": "注册 — BG-Zero",
+    "registerDescription": "免费注册 BG-Zero，立即开始去除背景。",
+    "forgotPasswordTitle": "忘记密码 — BG-Zero",
+    "forgotPasswordDescription": "重置你的 BG-Zero 账号密码。",
+    "resetPasswordTitle": "重置密码 — BG-Zero",
+    "resetPasswordDescription": "为你的 BG-Zero 账号设置新密码。",
+    "adminTitle": "管理后台 — BG-Zero",
+    "adminDescription": "BG-Zero 管理仪表板。",
+    "adminEventsTitle": "事件明细 — 管理后台 — BG-Zero",
+    "adminEventsDescription": "BG-Zero 事件分析详情。"
+  },
+  "faq": {
+    "sectionTitle": "常见问题",
+    "sectionSub": "关于 BG-Zero 你需要知道的一切",
+    "q1": {
+      "question": "BG-Zero 是完全免费的吗？",
+      "answer": "是的，BG-Zero 100% 免费使用。没有水印、没有文件大小限制、没有隐藏费用。你可以去除任意数量图片的背景。"
+    },
+    "q2": {
+      "question": "BG-Zero 会把我的图片上传到服务器吗？",
+      "answer": "不会。所有 AI 处理都在你的浏览器中通过 WebAssembly 技术本地运行。你的图片永远不会离开设备，确保完全的隐私和数据安全。"
+    },
+    "q3": {
+      "question": "BG-Zero 支持哪些 AI 引擎？",
+      "answer": "BG-Zero 提供三种 AI 引擎：imgly（IS-Net 模型，约 40MB，兼容所有浏览器）、Transformers.js（RMBG-1.4，约 176MB，效果最佳，需要 WebGPU）、rembg-web（7+ 种模型，4.7MB 起，MIT 许可）。"
+    },
+    "q4": {
+      "question": "BG-Zero 可以离线使用吗？",
+      "answer": "首次访问后，AI 模型文件会缓存在你的浏览器中。后续访问即使没有网络连接也能处理图片，前提是模型缓存未被清除。"
+    },
+    "q5": {
+      "question": "支持哪些图片格式？",
+      "answer": "BG-Zero 支持 JPG、PNG、WebP、BMP 格式。最大文件大小为 25MB。处理结果导出为透明 PNG 文件。"
+    },
+    "q6": {
+      "question": "自动模式和手动模式有什么区别？",
+      "answer": "自动模式使用 AI 一键检测并去除背景，适合大多数图片。手动模式允许你用取色器选取特定颜色，使用 Flood Fill 精准去除，还有蒙版画笔保护你想保留的区域。"
+    }
   }
 }

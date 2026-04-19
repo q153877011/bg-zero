@@ -16,7 +16,7 @@ export default function ImageUploader({ onUpload }: ImageUploaderProps) {
   const inputRef = useRef<HTMLInputElement>(null)
   const [isDraggingOver, setIsDraggingOver] = useState(false)
 
-  const { processFile, isLoading, uploadError, uploadedImage } = useImageUpload()
+  const { processFile, isLoading, uploadError, uploadedImage } = useImageUpload(t)
 
   useEffect(() => {
     if (uploadedImage) {

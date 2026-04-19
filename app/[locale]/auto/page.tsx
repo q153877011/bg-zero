@@ -15,7 +15,7 @@ export default function AutoPage() {
 
   useEffect(() => {
     track('page_view', { page: '/auto' })
-  }, [])
+  }, [track])
 
   const tips = useMemo(() => [
     t('tip1'),

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
-import { useRouter } from 'next/navigation'
+import { useRouter } from '@/i18n/navigation'
 import { ArrowLeft, List, AlertCircle, ChevronLeft, ChevronRight } from 'lucide-react'
 import styles from './page.module.css'
 

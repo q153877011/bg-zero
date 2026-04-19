@@ -6,6 +6,7 @@ import { Link } from '@/i18n/navigation'
 import { signIn } from '@/lib/auth-client'
 import { useAnalytics } from '@/lib/hooks/useAnalytics'
 import styles from './page.module.css'
+import LanguageSwitcher from '@/components/shared/LanguageSwitcher'
 
 // definePageMeta({ auth: 'guest' }) — handled by proxy
 
@@ -137,6 +138,10 @@ export default function LoginPage() {
       {/* ══ RIGHT — Auth panel ══ */}
       <div className={styles.lpRight}>
         <div className={styles.lpCard}>
+
+          <div className="flex justify-end mb-3">
+            <LanguageSwitcher />
+          </div>
 
           {/* Mobile back link */}
           <Link href="/" className={styles.lpMobileBack}>

@@ -5,16 +5,18 @@ import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import { Sparkles, ShieldCheck, Cpu, Layers, Image as ImageIcon, Upload, Download, Paintbrush } from 'lucide-react'
 import { useAnalytics } from '@/lib/hooks/useAnalytics'
+import FAQSection from '@/components/seo/FAQSection'
 import styles from './page.module.css'
 
 export default function HomePage() {
   const { track } = useAnalytics()
   const t = useTranslations('home')
   const tc = useTranslations('common')
+  const tf = useTranslations('faq')
 
   useEffect(() => {
     track('page_view', { page: '/' })
-  }, [])
+  }, [track])
 
   const stats = useMemo(() => [
     { icon: ShieldCheck, label: t('statPrivacy') },
@@ -194,6 +196,17 @@ export default function HomePage() {
               {i < steps.length - 1 && <div className={styles.stepLine} aria-hidden="true" />}
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ══ FAQ ══════════════════════════════════════════ */}
+      <section className={styles.sFaq}>
+        <div className={styles.secHead}>
+          <h2 className={styles.secTitle}>{tf('sectionTitle')}</h2>
+          <p className={styles.secSub}>{tf('sectionSub')}</p>
+        </div>
+        <div className={styles.faqWrap}>
+          <FAQSection />
         </div>
       </section>
 

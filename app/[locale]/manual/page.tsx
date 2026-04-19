@@ -47,7 +47,7 @@ export default function ManualPage() {
 
   useEffect(() => {
     track('page_view', { page: '/manual' })
-  }, [])
+  }, [track])
 
   // ---- Refs ----
   const [uploadedImage, setUploadedImage] = useState<UploadedImage | null>(null)

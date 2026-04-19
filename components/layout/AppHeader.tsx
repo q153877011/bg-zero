@@ -13,7 +13,7 @@ export default function AppHeader() {
   const t = useTranslations('common')
   const pathname = usePathname()
 
-  const navItems = [
+  const navItems = useMemo(() => [
     {
       to: '/auto',
       label: t('autoRemove'),
@@ -28,14 +28,14 @@ export default function AppHeader() {
       color: '#F97316',
       ring: 'rgba(249, 115, 22, 0.20)',
     },
-  ]
+  ], [t])
   const [isScrolled, setIsScrolled] = useState(false)
   const navWrapRef = useRef<HTMLElement>(null)
   const itemRefs = useRef<Record<string, HTMLElement>>({})
   const [pill, setPill] = useState({ left: 0, w: 0, show: false })
 
   const isActive = useCallback((path: string) => pathname === path, [pathname])
-  const activeItem = useMemo(() => navItems.find((i) => isActive(i.to)) ?? null, [isActive])
+  const activeItem = useMemo(() => navItems.find((i) => isActive(i.to)) ?? null, [navItems, isActive])
 
   // Scroll detection
   useEffect(() => {

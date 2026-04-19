@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useMemo } from 'react'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
-import { useRouter } from 'next/navigation'
+import { useRouter } from '@/i18n/navigation'
 import { ArrowLeft, ShieldCheck, Users, UserPlus, Image as ImageIcon, AlertTriangle, TrendingUp, PieChart, BarChart3, Layout, List, ArrowRight, AlertCircle } from 'lucide-react'
 import {
   Chart,

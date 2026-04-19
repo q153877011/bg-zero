@@ -45,7 +45,7 @@ export default function AutoProcessor() {
     clearResult,
     webGPUAvailable,
     sharedArrayBufferAvailable,
-  } = useAutoRemoval()
+  } = useAutoRemoval(t)
 
   const [uploadedImage, setUploadedImage] = useState<UploadedImage | null>(null)
   const [resultUrl, setResultUrl] = useState<string | null>(null)

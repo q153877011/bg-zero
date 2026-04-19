@@ -130,7 +130,24 @@
     "rembgIsnetAnime": "Anime specialized",
     "rembgU2net": "General full version",
     "ccByNcTitle": "RMBG-1.4 uses CC BY-NC 4.0 license, non-commercial use only",
-    "requiresWebGPUTitle": "Requires Chrome 113+ browser with WebGPU support"
+    "requiresWebGPUTitle": "Requires Chrome 113+ browser with WebGPU support",
+    "loadingImgly": "Loading imgly engine...",
+    "loadingTransformers": "Loading Transformers.js engine...",
+    "loadingTransformersModel": "Downloading RMBG-1.4 model (~176MB)... First load may take a few minutes, please wait",
+    "loadingRembg": "Loading rembg-web ({model})...",
+    "errNoOffscreenCanvas": "Your browser does not support OffscreenCanvas. Cannot use Transformers.js engine. Please use imgly or rembg-web instead.",
+    "errUnknown": "Unknown error, please try again.",
+    "errWebGPU": "Your browser does not support WebGPU. Auto-switched to CPU mode. If errors persist, use imgly engine.",
+    "errSharedArrayBuffer": "Browser security restrictions prevented multi-thread acceleration. Please ensure COOP/COEP headers are enabled, or try another engine.",
+    "errModelDownload": "Model download failed. Please check your network connection and try again.",
+    "errOutOfMemory": "Out of memory. Please close other tabs and try again, or upload a smaller image.",
+    "errEngineLoad": "Engine loading failed. Please try again or switch to another engine.",
+    "featureList1": "AI-powered automatic background removal",
+    "featureList2": "Manual color picker mode with Flood Fill",
+    "featureList3": "100% local processing in browser",
+    "featureList4": "No watermark, no upload, no login required",
+    "featureList5": "Three AI engines: imgly, Transformers.js, rembg-web",
+    "featureList6": "Transparent PNG export"
   },
   "manual": {
     "pageTitle": "Manual Background Removal",
@@ -312,6 +329,10 @@
     "clickToSelect": "click to select",
     "maxSizePaste": "Max 25MB · Ctrl+V to paste",
     "ariaLabel": "Upload area, click or drag image here",
+    "errUnsupportedFormat": "Unsupported format: {format}. Please upload JPG, PNG, WebP or BMP.",
+    "errFileTooLarge": "File too large ({size}MB). Please upload an image under {max}MB.",
+    "errTooHighRes": "Image resolution too high ({width}×{height}, {mp}MP). Max 16MP.",
+    "errReadFailed": "Failed to read image, please try again.",
     "originalLabel": "ORIGINAL",
     "resultLabel": "RESULT",
     "noImage": "No image",
@@ -319,5 +340,53 @@
     "originalAlt": "Original image",
     "resultAlt": "Processed result",
     "pngTransparent": "PNG · Transparent"
+  },
+  "seo": {
+    "homeTitle": "BG-Zero — Free AI Background Remover | 100% Local & Private",
+    "homeDescription": "Remove image backgrounds instantly with AI. Three engines, 100% local browser processing, no upload, no watermark. Free online background remover that protects your privacy.",
+    "autoTitle": "AI Background Remover — One-Click Remove | BG-Zero",
+    "autoDescription": "AI-powered automatic background removal. Choose from imgly, Transformers.js, or rembg-web engines. Runs entirely in your browser — images never leave your device.",
+    "manualTitle": "Manual Background Remover — Color Pick & Flood Fill | BG-Zero",
+    "manualDescription": "Precisely remove backgrounds with color picker and Flood Fill algorithm. Mask brush protects subject, tolerance slider controls precision. Supports undo/redo.",
+    "loginTitle": "Sign In — BG-Zero",
+    "loginDescription": "Sign in to BG-Zero to start removing backgrounds.",
+    "registerTitle": "Create Account — BG-Zero",
+    "registerDescription": "Sign up for free and start removing backgrounds with BG-Zero.",
+    "forgotPasswordTitle": "Forgot Password — BG-Zero",
+    "forgotPasswordDescription": "Reset your BG-Zero account password.",
+    "resetPasswordTitle": "Reset Password — BG-Zero",
+    "resetPasswordDescription": "Set a new password for your BG-Zero account.",
+    "adminTitle": "Admin Dashboard — BG-Zero",
+    "adminDescription": "BG-Zero administration dashboard.",
+    "adminEventsTitle": "Event Details — Admin — BG-Zero",
+    "adminEventsDescription": "BG-Zero event analytics details."
+  },
+  "faq": {
+    "sectionTitle": "Frequently Asked Questions",
+    "sectionSub": "Everything you need to know about BG-Zero",
+    "q1": {
+      "question": "Is BG-Zero completely free?",
+      "answer": "Yes, BG-Zero is 100% free to use. There are no watermarks, no file size limits, and no hidden fees. You can remove backgrounds from as many images as you want."
+    },
+    "q2": {
+      "question": "Does BG-Zero upload my images to a server?",
+      "answer": "No. All AI processing runs locally in your browser using WebAssembly technology. Your images never leave your device, ensuring complete privacy and data security."
+    },
+    "q3": {
+      "question": "Which AI engines does BG-Zero support?",
+      "answer": "BG-Zero offers three AI engines: imgly (IS-Net model, ~40MB, compatible with all browsers), Transformers.js (RMBG-1.4, ~176MB, best quality, requires WebGPU), and rembg-web (7+ models from 4.7MB, MIT licensed)."
+    },
+    "q4": {
+      "question": "Can I use BG-Zero offline?",
+      "answer": "After the first visit, AI model files are cached in your browser. Subsequent visits can process images even without an internet connection, as long as the model cache hasn't been cleared."
+    },
+    "q5": {
+      "question": "What image formats are supported?",
+      "answer": "BG-Zero supports JPG, PNG, WebP, and BMP formats. The maximum file size is 25MB. Results are exported as transparent PNG files."
+    },
+    "q6": {
+      "question": "What's the difference between Auto and Manual mode?",
+      "answer": "Auto mode uses AI to detect and remove backgrounds with one click — perfect for most images. Manual mode lets you pick specific colors with an eyedropper and use Flood Fill for precise removal, with a mask brush to protect areas you want to keep."
+    }
   }
 }

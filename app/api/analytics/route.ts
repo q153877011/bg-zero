@@ -20,6 +20,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Invalid event' }, { status: 400 })
   }
 
+  const metadataStr = JSON.stringify(body.metadata || {})
+  if (metadataStr.length > 2048) {
+    return NextResponse.json({ error: 'Metadata too large' }, { status: 400 })
+  }
+
   let userId: string | null = null
   try {
     const session = await auth.api.getSession({ headers: request.headers })
@@ -32,7 +37,7 @@ export async function POST(request: Request) {
   await pool.query(
     `INSERT INTO public.analytics_events (user_id, event, metadata)
      VALUES ($1, $2, $3)`,
-    [userId, body.event, JSON.stringify(body.metadata || {})]
+    [userId, body.event, metadataStr]
   )
 
   return NextResponse.json({ ok: true })

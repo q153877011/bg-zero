@@ -6,6 +6,7 @@ import { Link } from '@/i18n/navigation'
 import { signUp } from '@/lib/auth-client'
 import { useAnalytics } from '@/lib/hooks/useAnalytics'
 import styles from './page.module.css'
+import LanguageSwitcher from '@/components/shared/LanguageSwitcher'
 
 // definePageMeta({ auth: 'guest' }) — handled by proxy
 
@@ -190,6 +191,10 @@ export default function RegisterPage() {
       {/* ══ RIGHT ══ */}
       <div className={styles.rpRight}>
         <div className={styles.rpCard}>
+
+          <div className="flex justify-end mb-3">
+            <LanguageSwitcher />
+          </div>
 
           {registered ? (
             <div className={styles.rpcSuccess}>

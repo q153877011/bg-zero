@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import { authClient } from '@/lib/auth-client'
 import styles from './page.module.css'
+import LanguageSwitcher from '@/components/shared/LanguageSwitcher'
 
 // definePageMeta({ auth: 'guest' }) — handled by proxy
 
@@ -80,6 +81,10 @@ export default function ForgotPasswordPage() {
         </Link>
 
         <div className={styles.fpCard}>
+
+          <div className="flex justify-end mb-3">
+            <LanguageSwitcher />
+          </div>
 
           {sent ? (
             <div className={styles.fpSuccess}>

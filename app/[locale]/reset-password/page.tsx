@@ -6,6 +6,7 @@ import { Link, useRouter } from '@/i18n/navigation'
 import { useSearchParams } from 'next/navigation'
 import { authClient } from '@/lib/auth-client'
 import styles from './page.module.css'
+import LanguageSwitcher from '@/components/shared/LanguageSwitcher'
 
 // definePageMeta({ auth: 'guest' }) — handled by proxy
 
@@ -131,6 +132,10 @@ function ResetPasswordContent() {
         </Link>
 
         <div className={styles.rpCard}>
+
+          <div className="flex justify-end mb-3">
+            <LanguageSwitcher />
+          </div>
 
           {!token ? (
             <div className={styles.rpInvalid}>

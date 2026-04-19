@@ -19,12 +19,12 @@ export interface RemovalEngine {
 }
 
 export const REMBG_MODELS = [
-  { id: 'u2netp',             label: 'u2netp',           size: '4.7MB',  speed: '~950ms',  desc: '极速预览', recommended: true },
-  { id: 'silueta',            label: 'silueta',          size: '44MB',   speed: '~2s',     desc: '背景优化' },
-  { id: 'u2net_human_seg',    label: 'u2net_human_seg',  size: '44MB',   speed: '~2s',     desc: '人像专用' },
-  { id: 'isnet-general-use',  label: 'isnet-general',    size: '44MB',   speed: '~7s',     desc: '高精度通用' },
-  { id: 'isnet-anime',        label: 'isnet-anime',      size: '44MB',   speed: '~3s',     desc: '动漫专用' },
-  { id: 'u2net',              label: 'u2net',            size: '176MB',  speed: '~2.6s',   desc: '通用完整版' },
+  { id: 'u2netp',             label: 'u2netp',           size: '4.7MB',  speed: '~950ms',  desc: 'Ultra-fast preview', recommended: true },
+  { id: 'silueta',            label: 'silueta',          size: '44MB',   speed: '~2s',     desc: 'Background optimized' },
+  { id: 'u2net_human_seg',    label: 'u2net_human_seg',  size: '44MB',   speed: '~2s',     desc: 'Portrait specialized' },
+  { id: 'isnet-general-use',  label: 'isnet-general',    size: '44MB',   speed: '~7s',     desc: 'High-precision general' },
+  { id: 'isnet-anime',        label: 'isnet-anime',      size: '44MB',   speed: '~3s',     desc: 'Anime specialized' },
+  { id: 'u2net',              label: 'u2net',            size: '176MB',  speed: '~2.6s',   desc: 'General full version' },
 ] as const
 
 export type RembgModel = typeof REMBG_MODELS[number]['id']
@@ -32,7 +32,7 @@ export type RembgModel = typeof REMBG_MODELS[number]['id']
 // Module-level singleton cache — survives route changes so models aren't re-downloaded
 const _loadedEngines = new Map<string, RemovalEngine>()
 
-export function useAutoRemoval() {
+export function useAutoRemoval(t?: (key: string, params?: Record<string, string | number>) => string) {
   const { load: loadPref, save: savePref } = useEnginePreference()
   const { track } = useAnalytics()
 
@@ -56,7 +56,7 @@ export function useAutoRemoval() {
   const sharedArrayBufferAvailable = isSharedArrayBufferAvailable()
 
   async function loadImgly(): Promise<RemovalEngine> {
-    setEngineLoadText('Loading imgly engine...')
+    setEngineLoadText(t ? t('loadingImgly') : 'Loading imgly engine...')
     setEngineLoadProgress(0)
     const mod = await import('@imgly/background-removal')
     setEngineLoadProgress(100)
@@ -78,13 +78,13 @@ export function useAutoRemoval() {
 
   async function loadTransformers(): Promise<RemovalEngine> {
     if (!isOffscreenCanvasAvailable()) {
-      throw new Error('Your browser does not support OffscreenCanvas. Cannot use Transformers.js engine. Please use imgly or rembg-web instead.')
+      throw new Error(t ? t('errNoOffscreenCanvas') : 'Your browser does not support OffscreenCanvas. Cannot use Transformers.js engine. Please use imgly or rembg-web instead.')
     }
 
-    setEngineLoadText('Loading Transformers.js engine...')
+    setEngineLoadText(t ? t('loadingTransformers') : 'Loading Transformers.js engine...')
     setEngineLoadProgress(0)
     const { pipeline, env } = await import('@huggingface/transformers')
-    setEngineLoadText('Downloading RMBG-1.4 model (~176MB)... First load may take a few minutes, please wait')
+    setEngineLoadText(t ? t('loadingTransformersModel') : 'Downloading RMBG-1.4 model (~176MB)... First load may take a few minutes, please wait')
 
     if (MODEL_CDN) {
       env.remoteHost = `${MODEL_CDN}/transformers/`
@@ -152,7 +152,7 @@ export function useAutoRemoval() {
   }
 
   async function loadRembgWeb(modelId: RembgModel): Promise<RemovalEngine> {
-    setEngineLoadText(`Loading rembg-web (${modelId})...`)
+    setEngineLoadText(t ? t('loadingRembg', { model: modelId }) : `Loading rembg-web (${modelId})...`)
     setEngineLoadProgress(0)
     const mod = await import('@bunnio/rembg-web')
 
@@ -181,14 +181,14 @@ export function useAutoRemoval() {
   }
 
   function friendlyError(e: any): string {
-    if (!e) return 'Unknown error, please try again.'
+    if (!e) return t ? t('errUnknown') : 'Unknown error, please try again.'
     const msg: string = e?.message ?? String(e)
     if (msg.startsWith('Your browser') || msg.startsWith('Image')) return msg
-    if (msg.includes('WebGPU') || msg.includes('gpu')) return 'Your browser does not support WebGPU. Auto-switched to CPU mode. If errors persist, use imgly engine.'
-    if (msg.includes('SharedArrayBuffer')) return 'Browser security restrictions prevented multi-thread acceleration. Please ensure COOP/COEP headers are enabled, or try another engine.'
-    if (msg.includes('fetch') || msg.includes('network') || msg.includes('Failed to fetch')) return 'Model download failed. Please check your network connection and try again.'
-    if (msg.includes('memory') || msg.includes('OOM') || msg.includes('out of memory')) return 'Out of memory. Please close other tabs and try again, or upload a smaller image.'
-    return 'Engine loading failed. Please try again or switch to another engine.'
+    if (msg.includes('WebGPU') || msg.includes('gpu')) return t ? t('errWebGPU') : 'Your browser does not support WebGPU. Auto-switched to CPU mode. If errors persist, use imgly engine.'
+    if (msg.includes('SharedArrayBuffer')) return t ? t('errSharedArrayBuffer') : 'Browser security restrictions prevented multi-thread acceleration. Please ensure COOP/COEP headers are enabled, or try another engine.'
+    if (msg.includes('fetch') || msg.includes('network') || msg.includes('Failed to fetch')) return t ? t('errModelDownload') : 'Model download failed. Please check your network connection and try again.'
+    if (msg.includes('memory') || msg.includes('OOM') || msg.includes('out of memory')) return t ? t('errOutOfMemory') : 'Out of memory. Please close other tabs and try again, or upload a smaller image.'
+    return t ? t('errEngineLoad') : 'Engine loading failed. Please try again or switch to another engine.'
   }
 
   const switchEngine = useCallback(async (engine: EngineType, model?: RembgModel) => {

@@ -15,7 +15,7 @@ export interface UploadedImage {
   sizeKB: number
 }
 
-export function useImageUpload() {
+export function useImageUpload(t?: (key: string, params?: Record<string, string | number>) => string) {
   const [uploadedImage, setUploadedImage] = useState<UploadedImage | null>(null)
   const [isDragging, setIsDragging] = useState(false)
   const [uploadError, setUploadError] = useState<string | null>(null)
@@ -26,13 +26,13 @@ export function useImageUpload() {
     setUploadError(null)
 
     if (!ALLOWED_TYPES.includes(file.type)) {
-      setUploadError(`Unsupported format: ${file.type || 'unknown'}. Please upload JPG, PNG, WebP or BMP.`)
+      setUploadError(t ? t('errUnsupportedFormat', { format: file.type || 'unknown' }) : `Unsupported format: ${file.type || 'unknown'}. Please upload JPG, PNG, WebP or BMP.`)
       return
     }
 
     const sizeMB = file.size / (1024 * 1024)
     if (sizeMB > MAX_SIZE_MB) {
-      setUploadError(`File too large (${sizeMB.toFixed(1)}MB). Please upload an image under ${MAX_SIZE_MB}MB.`)
+      setUploadError(t ? t('errFileTooLarge', { size: sizeMB.toFixed(1), max: MAX_SIZE_MB }) : `File too large (${sizeMB.toFixed(1)}MB). Please upload an image under ${MAX_SIZE_MB}MB.`)
       return
     }
 
@@ -43,7 +43,7 @@ export function useImageUpload() {
 
       if (dims.width * dims.height > MAX_PIXELS) {
         const mp = (dims.width * dims.height / 1_000_000).toFixed(1)
-        setUploadError(`Image resolution too high (${dims.width}×${dims.height}, ${mp}MP). Please upload an image under 16MP.`)
+        setUploadError(t ? t('errResolutionTooHigh', { width: dims.width, height: dims.height, mp }) : `Image resolution too high (${dims.width}×${dims.height}, ${mp}MP). Please upload an image under 16MP.`)
         return
       }
 
@@ -64,7 +64,7 @@ export function useImageUpload() {
         height: dims.height,
       })
     } catch {
-      setUploadError('Failed to read image, please try again.')
+      setUploadError(t ? t('errReadFailed') : 'Failed to read image, please try again.')
     } finally {
       setIsLoading(false)
     }
