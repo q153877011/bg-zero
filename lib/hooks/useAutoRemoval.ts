@@ -63,12 +63,21 @@ export function useAutoRemoval(t?: (key: string, params?: Record<string, string 
     return {
       name: 'imgly',
       async process(image, onProgress) {
+        // imgly fires progress for multiple resources (wasm, model, inference)
+        // each with its own current/total. Track them all for overall progress.
+        const phases = new Map<string, { current: number; total: number }>()
         const result = await mod.removeBackground(image as Blob, {
-          progress: (_key: string, current: number, total: number) => {
-            onProgress?.(total > 0 ? current / total : 0)
+          progress: (key: string, current: number, total: number) => {
+            phases.set(key, { current, total })
+            let sumCurrent = 0
+            let sumTotal = 0
+            for (const v of phases.values()) {
+              sumCurrent += v.current
+              sumTotal += v.total
+            }
+            onProgress?.(sumTotal > 0 ? sumCurrent / sumTotal : 0)
           },
           model: 'isnet_fp16',
-          // Only set publicPath if CDN has onnxruntime-web WASM files uploaded
           ...(MODEL_CDN ? { publicPath: `${MODEL_CDN}/imgly/` } : {}),
         })
         return result
