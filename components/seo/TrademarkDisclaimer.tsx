@@ -3,9 +3,9 @@
  * Trademark disclaimer component for comparison pages.
  * Required for nominative fair use compliance.
  */
+import styles from './TrademarkDisclaimer.module.css'
 
 interface TrademarkDisclaimerProps {
-  /** List of third-party trademarks mentioned on the page */
   trademarks: Array<{
     name: string
     owner: string
@@ -20,20 +20,8 @@ export default function TrademarkDisclaimer({ trademarks }: TrademarkDisclaimerP
   })
 
   return (
-    <aside
-      role="note"
-      style={{
-        marginTop: '2rem',
-        padding: '1rem 1.25rem',
-        borderRadius: '8px',
-        background: 'rgba(0, 0, 0, 0.02)',
-        border: '1px solid rgba(0, 0, 0, 0.06)',
-        fontSize: '0.8125rem',
-        lineHeight: '1.6',
-        color: '#78716C',
-      }}
-    >
-      <strong style={{ color: '#57534E' }}>Trademark Notice:</strong>{' '}
+    <aside role="note" className={styles.disclaimer}>
+      <strong className={styles.label}>Trademark Notice:</strong>{' '}
       {trademarks.map((tm, i) => (
         <span key={tm.name}>
           {tm.name} is a trademark of {tm.owner}

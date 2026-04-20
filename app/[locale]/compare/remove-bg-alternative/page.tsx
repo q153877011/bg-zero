@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
-import { ShieldCheck, Sparkles, Wifi, Code } from 'lucide-react'
+import { ShieldCheck, Sparkles, Code } from 'lucide-react'
 import TrademarkDisclaimer from '@/components/seo/TrademarkDisclaimer'
 import styles from './page.module.css'
 

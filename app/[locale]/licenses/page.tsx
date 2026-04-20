@@ -1,22 +1,16 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { Link } from '@/i18n/navigation'
+import BackLink from '@/components/shared/BackLink'
 import styles from '../legal.module.css'
 
 export default function LicensesPage() {
   const t = useTranslations('licenses')
-  const tl = useTranslations('legal')
 
   return (
     <div className={styles.legalPage}>
       <div className={styles.legalInner}>
-        <Link href="/" className={styles.backLink}>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M11 7H3M6 4L3 7l3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-          {tl('backToHome')}
-        </Link>
+        <BackLink />
 
         <header className={styles.legalHeader}>
           <h1 className={styles.legalTitle}>{t('heading')}</h1>

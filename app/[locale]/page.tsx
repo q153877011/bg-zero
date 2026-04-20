@@ -43,6 +43,15 @@ export default function HomePage() {
     },
   ], [t])
 
+  const useCases = useMemo(() => [
+    { icon: ShoppingBag, title: t('ucEcommerce'), desc: t('ucEcommerceDesc') },
+    { icon: User, title: t('ucProfile'), desc: t('ucProfileDesc') },
+    { icon: Share2, title: t('ucSocial'), desc: t('ucSocialDesc') },
+    { icon: Presentation, title: t('ucPresentation'), desc: t('ucPresentationDesc') },
+    { icon: Palette, title: t('ucDesign'), desc: t('ucDesignDesc') },
+    { icon: CreditCard, title: t('ucIdPhoto'), desc: t('ucIdPhotoDesc') },
+  ], [t])
+
   return (
     <div className={styles.home}>
 
@@ -259,14 +268,7 @@ export default function HomePage() {
         </div>
 
         <div className={styles.ucGrid}>
-          {[
-            { icon: ShoppingBag, title: t('ucEcommerce'), desc: t('ucEcommerceDesc') },
-            { icon: User, title: t('ucProfile'), desc: t('ucProfileDesc') },
-            { icon: Share2, title: t('ucSocial'), desc: t('ucSocialDesc') },
-            { icon: Presentation, title: t('ucPresentation'), desc: t('ucPresentationDesc') },
-            { icon: Palette, title: t('ucDesign'), desc: t('ucDesignDesc') },
-            { icon: CreditCard, title: t('ucIdPhoto'), desc: t('ucIdPhotoDesc') },
-          ].map((uc) => (
+          {useCases.map((uc) => (
             <div key={uc.title} className={styles.ucCard}>
               <div className={styles.ucIcon}><uc.icon size={18} /></div>
               <h3 className={styles.ucTitle}>{uc.title}</h3>
