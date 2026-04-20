@@ -101,3 +101,66 @@
 .errorShake {
   animation: shake-once 400ms var(--ease-out-quart);
 }
+
+/* File reading stage */
+.readingStage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  animation: fadeUp 0.3s var(--ease-out-quart);
+}
+
+.readingSpinner {
+  width: 28px;
+  height: 28px;
+  border: 2.5px solid rgba(99, 102, 241, 0.2);
+  border-top-color: var(--accent-primary);
+  border-radius: 50%;
+  animation: spin 800ms linear infinite;
+}
+
+.readingName {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.readingBar {
+  width: 200px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(99, 102, 241, 0.12);
+  overflow: hidden;
+}
+
+.readingBarFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-primary), #8B5CF6);
+  transition: width 150ms var(--ease-out-quart);
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.4);
+}
+
+.readingPct {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Original image fade-in */
+.previewFadeIn {
+  animation: previewIn 400ms var(--ease-out-expo) both;
+}
+
+@keyframes previewIn {
+  0%   { opacity: 0; transform: scale(1.03); filter: blur(8px); }
+  60%  { filter: blur(0); }
+  100% { opacity: 1; transform: scale(1); filter: blur(0); }
+}

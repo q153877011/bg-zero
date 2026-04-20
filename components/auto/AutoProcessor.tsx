@@ -52,6 +52,9 @@ export default function AutoProcessor() {
 
   const [uploadedImage, setUploadedImage] = useState<UploadedImage | null>(null)
   const [resultUrl, setResultUrl] = useState<string | null>(null)
+  const [isReadingFile, setIsReadingFile] = useState(false)
+  const [readProgress, setReadProgress] = useState(0)
+  const [readingFileName, setReadingFileName] = useState('')
 
   // Engine warning modal
   const [showWarningModal, setShowWarningModal] = useState(false)
@@ -159,21 +162,29 @@ export default function AutoProcessor() {
   if (!uploadedImage) {
     return (
       <div className={styles.fadeUp}>
-        {/* ImageUploader placeholder — assumes it exists or will be created */}
         <div
-          className="border-2 border-dashed border-[rgba(28,25,23,0.15)] rounded-2xl p-12 text-center cursor-pointer hover:border-[var(--accent-primary)] transition-colors"
+          className="border-2 border-dashed border-[rgba(28,25,23,0.15)] rounded-2xl p-12 text-center cursor-pointer hover:border-[var(--accent-primary)] transition-colors relative overflow-hidden"
           onClick={() => {
+            if (isReadingFile) return
             const input = document.createElement('input')
             input.type = 'file'
             input.accept = 'image/*'
             input.onchange = async (e) => {
               const file = (e.target as HTMLInputElement).files?.[0]
               if (!file) return
-              const dataUrl = await new Promise<string>((resolve) => {
+              setIsReadingFile(true)
+              setReadProgress(0)
+              setReadingFileName(file.name)
+              const dataUrl = await new Promise<string>((resolve, reject) => {
                 const reader = new FileReader()
+                reader.onprogress = (ev) => {
+                  if (ev.lengthComputable) setReadProgress(Math.round(ev.loaded / ev.total * 100))
+                }
                 reader.onload = () => resolve(reader.result as string)
+                reader.onerror = reject
                 reader.readAsDataURL(file)
               })
+              setReadProgress(100)
               const img = new Image()
               img.onload = () => {
                 onUpload({
@@ -183,13 +194,26 @@ export default function AutoProcessor() {
                   height: img.naturalHeight,
                   sizeKB: Math.round(file.size / 1024),
                 })
+                setIsReadingFile(false)
+                setReadProgress(0)
               }
               img.src = dataUrl
             }
             input.click()
           }}
         >
-          <p className="text-[14px] text-[var(--text-secondary)]">{t('uploadHint')}</p>
+          {isReadingFile ? (
+            <div className={styles.readingStage}>
+              <div className={styles.readingSpinner} />
+              <p className={styles.readingName}>{readingFileName}</p>
+              <div className={styles.readingBar}>
+                <div className={styles.readingBarFill} style={{ width: `${readProgress}%` }} />
+              </div>
+              <p className={styles.readingPct}>{readProgress}%</p>
+            </div>
+          ) : (
+            <p className="text-[14px] text-[var(--text-secondary)]">{t('uploadHint')}</p>
+          )}
         </div>
       </div>
     )
@@ -224,7 +248,7 @@ export default function AutoProcessor() {
             <div className="relative aspect-square rounded-xl overflow-hidden bg-[var(--bg-secondary)]">
               <img
                 src={uploadedImage.dataUrl}
-                className="absolute inset-0 w-full h-full object-contain"
+                className={`absolute inset-0 w-full h-full object-contain ${styles.previewFadeIn}`}
                 alt={uploadedImage.file.name}
               />
             </div>
