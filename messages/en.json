@@ -683,5 +683,15 @@
     "req6": "Your physical or electronic signature",
     "responseTitle": "Response",
     "response": "We will respond to valid DMCA notices within 48 hours and take appropriate action."
+  },
+  "consent": {
+    "ariaLabel": "Cookie consent",
+    "title": "A tiny cookie question",
+    "description": "We'd like to use Google Analytics to understand how people use BG-Zero. No image data is ever sent — images stay 100% in your browser. See our <privacy>Privacy Policy</privacy>.",
+    "accept": "Accept",
+    "reject": "Reject",
+    "acceptAria": "Accept analytics cookies",
+    "rejectAria": "Reject analytics cookies",
+    "close": "Close"
   }
 }

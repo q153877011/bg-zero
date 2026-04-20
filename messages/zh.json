@@ -683,5 +683,15 @@
     "req6": "你的实体或电子签名",
     "responseTitle": "响应",
     "response": "我们将在 48 小时内回复有效的 DMCA 通知并采取适当措施。"
+  },
+  "consent": {
+    "ariaLabel": "Cookie 授权",
+    "title": "一个小小的 Cookie 询问",
+    "description": "我们想使用 Google Analytics 了解大家如何使用 BG-Zero。图片数据永远不会被发送——它们 100% 留在你的浏览器里。详见 <privacy>隐私政策</privacy>。",
+    "accept": "接受",
+    "reject": "拒绝",
+    "acceptAria": "接受分析 Cookie",
+    "rejectAria": "拒绝分析 Cookie",
+    "close": "关闭"
   }
 }

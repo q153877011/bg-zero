@@ -1,0 +1,236 @@
+/* ==========================================
+   CookieConsent — Swiss Minimalism + soft aurora accent
+   Non-blocking bottom sheet. Equal-visual-weight buttons (GDPR compliant).
+   ========================================== */
+
+.wrapper {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 70;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  animation: consent-in 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes consent-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  position: relative;
+  pointer-events: auto;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 720px;
+  padding: 14px 18px 14px 16px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px) saturate(1.1);
+  -webkit-backdrop-filter: blur(20px) saturate(1.1);
+  border: 1px solid rgba(28, 25, 23, 0.08);
+  border-radius: 14px;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 12px 40px rgba(0, 0, 0, 0.09);
+}
+
+.iconWrap {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: var(--accent-primary-light);
+  color: var(--accent-primary);
+}
+
+.content {
+  min-width: 0;
+}
+
+.title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 2px;
+  letter-spacing: -0.005em;
+}
+
+.description {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.link {
+  color: var(--accent-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 500;
+  transition: color 150ms ease;
+}
+
+.link:hover {
+  color: var(--accent-primary-hover);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Equal visual weight: reject and accept must look similar (GDPR 2022 EDPB guidance).
+   We differentiate only by fill vs outline, both same size / padding / font-weight. */
+
+.btnAccept,
+.btnReject {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  padding: 0 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition:
+    transform 120ms cubic-bezier(0.68, -0.6, 0.32, 1.6),
+    background 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+  white-space: nowrap;
+}
+
+.btnAccept {
+  background: var(--text-primary);
+  color: var(--text-inverse);
+  border: 1px solid var(--text-primary);
+}
+
+.btnAccept:hover {
+  background: #000;
+  border-color: #000;
+}
+
+.btnAccept:active {
+  transform: scale(0.97);
+}
+
+.btnReject {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid rgba(28, 25, 23, 0.15);
+}
+
+.btnReject:hover {
+  background: rgba(28, 25, 23, 0.04);
+  border-color: rgba(28, 25, 23, 0.25);
+}
+
+.btnReject:active {
+  transform: scale(0.97);
+}
+
+.btnAccept:focus-visible,
+.btnReject:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.closeBtn:hover {
+  background: rgba(28, 25, 23, 0.05);
+  color: var(--text-secondary);
+}
+
+.closeBtn:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 1px;
+}
+
+/* ==========================================
+   Responsive — stack layout on mobile
+   ========================================== */
+@media (max-width: 640px) {
+  .wrapper {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .card {
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      'icon content'
+      'actions actions';
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
+  .iconWrap {
+    grid-area: icon;
+  }
+
+  .content {
+    grid-area: content;
+  }
+
+  .actions {
+    grid-area: actions;
+    width: 100%;
+  }
+
+  .btnAccept,
+  .btnReject {
+    flex: 1;
+  }
+
+  .closeBtn {
+    top: 8px;
+    right: 8px;
+  }
+}
+
+/* ==========================================
+   Reduced motion
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+  .wrapper {
+    animation: none;
+  }
+  .btnAccept,
+  .btnReject {
+    transition: none;
+  }
+}
