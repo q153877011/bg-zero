@@ -720,3 +720,227 @@
 .faqWrap {
   margin-top: 8px;
 }
+
+/* ════════════════════════════════════════════════════════
+   WHY BG-ZERO (Comparison Table)
+════════════════════════════════════════════════════════ */
+.sWhy {
+  padding: 5rem 1.5rem;
+  background: var(--bg-primary, #FAFAF9);
+}
+
+.whyTableWrap {
+  max-width: 68rem;
+  margin: 0 auto;
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: var(--bg-canvas, #fff);
+}
+
+.whyTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+}
+
+.whyTable th {
+  padding: 0.875rem 1.25rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-tertiary, #A8A29E);
+  background: rgba(0, 0, 0, 0.02);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.whyThHighlight {
+  color: #6366F1 !important;
+  background: rgba(99, 102, 241, 0.04) !important;
+}
+
+.whyTable td {
+  padding: 0.875rem 1.25rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  color: var(--text-secondary, #57534E);
+}
+
+.whyTable tr:last-child td {
+  border-bottom: none;
+}
+
+.whyLabel {
+  text-align: left !important;
+  font-weight: 600;
+  color: var(--text-primary, #1C1917) !important;
+}
+
+.whyGood {
+  color: #15803D !important;
+  font-weight: 500;
+}
+
+/* ════════════════════════════════════════════════════════
+   USE CASES
+════════════════════════════════════════════════════════ */
+.sUseCases {
+  padding: 5rem 1.5rem;
+  background: var(--bg-secondary, #F5F5F4);
+  border-top: 1px solid rgba(28, 25, 23, 0.05);
+}
+
+.ucGrid {
+  max-width: 68rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.ucCard {
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: var(--bg-canvas, #fff);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s, transform 0.2s var(--ease-spring);
+}
+
+.ucCard:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+}
+
+.ucIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  background: rgba(99, 102, 241, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6366F1;
+  margin-bottom: 0.875rem;
+}
+
+.ucTitle {
+  font-family: var(--font-heading);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-primary, #1C1917);
+  margin: 0 0 0.4rem;
+}
+
+.ucDesc {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--text-secondary, #57534E);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ════════════════════════════════════════════════════════
+   FORMATS & ENGINES
+════════════════════════════════════════════════════════ */
+.sFormats {
+  padding: 5rem 1.5rem;
+  background: var(--bg-primary, #FAFAF9);
+}
+
+.fmGrid {
+  max-width: 68rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.fmCard {
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: var(--bg-canvas, #fff);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.fmCardTitle {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-tertiary, #A8A29E);
+  margin: 0 0 1rem;
+}
+
+.fmList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.75rem;
+}
+
+.fmList li {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--text-primary, #1C1917);
+  padding: 0.4rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.fmList li:last-child {
+  border-bottom: none;
+}
+
+.fmNote {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--text-tertiary, #A8A29E);
+  margin: 0;
+}
+
+.fmEngineList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.fmEngineList li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.fmEngineList li:last-child {
+  border-bottom: none;
+}
+
+.fmEngineList li strong {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-primary, #1C1917);
+}
+
+.fmEngineList li span {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--text-tertiary, #A8A29E);
+}
+
+/* ════════════════════════════════════════════════════════
+   RESPONSIVE (additions)
+════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .ucGrid { grid-template-columns: repeat(2, 1fr); }
+  .fmGrid { grid-template-columns: 1fr; }
+  .whyTable { font-size: 0.75rem; }
+  .whyTable th, .whyTable td { padding: 0.6rem 0.75rem; }
+}
+
+@media (max-width: 480px) {
+  .ucGrid { grid-template-columns: 1fr; }
+}

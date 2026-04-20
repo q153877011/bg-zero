@@ -3,7 +3,7 @@
 import { useEffect, useMemo } from 'react'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
-import { Sparkles, ShieldCheck, Cpu, Layers, Image as ImageIcon, Upload, Download, Paintbrush } from 'lucide-react'
+import { Sparkles, ShieldCheck, Cpu, Layers, Image as ImageIcon, Upload, Download, Paintbrush, ShoppingBag, User, Share2, Presentation, Palette, CreditCard } from 'lucide-react'
 import { useAnalytics } from '@/lib/hooks/useAnalytics'
 import FAQSection from '@/components/seo/FAQSection'
 import styles from './page.module.css'
@@ -196,6 +196,118 @@ export default function HomePage() {
               {i < steps.length - 1 && <div className={styles.stepLine} aria-hidden="true" />}
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ══ WHY BG-ZERO ════════════════════════════════════ */}
+      <section className={styles.sWhy}>
+        <div className={styles.secHead}>
+          <h2 className={styles.secTitle}>{t('whyTitle')}</h2>
+          <p className={styles.secSub}>{t('whySub')}</p>
+        </div>
+
+        <div className={styles.whyTableWrap}>
+          <table className={styles.whyTable}>
+            <thead>
+              <tr>
+                <th></th>
+                <th className={styles.whyThHighlight}>{t('whyBgZero')}</th>
+                <th>{t('whyRemoveBg')}</th>
+                <th>{t('whyCanva')}</th>
+                <th>{t('whyPhotoshop')}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className={styles.whyLabel}>{t('whyPrivacy')}</td>
+                <td className={styles.whyGood}>{t('whyLocalDevice')}</td>
+                <td>{t('whyCloudUpload')}</td>
+                <td>{t('whyCloudUpload')}</td>
+                <td>{t('whyLocalDevice')}</td>
+              </tr>
+              <tr>
+                <td className={styles.whyLabel}>{t('whyPrice')}</td>
+                <td className={styles.whyGood}>{t('whyFree')}</td>
+                <td>{t('whyFreemium')}</td>
+                <td>{t('whyFreemium')}</td>
+                <td>{t('whySubscription')}</td>
+              </tr>
+              <tr>
+                <td className={styles.whyLabel}>{t('whyWatermark')}</td>
+                <td className={styles.whyGood}>{t('whyNone')}</td>
+                <td>{t('whyOnFree')}</td>
+                <td>{t('whyNone')}</td>
+                <td>{t('whyNone')}</td>
+              </tr>
+              <tr>
+                <td className={styles.whyLabel}>{t('whyBatchLimit')}</td>
+                <td className={styles.whyGood}>{t('whyUnlimited')}</td>
+                <td>{t('whyLimited')}</td>
+                <td>{t('whyLimited')}</td>
+                <td>{t('whyUnlimited')}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* ══ USE CASES ══════════════════════════════════════ */}
+      <section className={styles.sUseCases}>
+        <div className={styles.secHead}>
+          <h2 className={styles.secTitle}>{t('useCasesTitle')}</h2>
+          <p className={styles.secSub}>{t('useCasesSub')}</p>
+        </div>
+
+        <div className={styles.ucGrid}>
+          {[
+            { icon: ShoppingBag, title: t('ucEcommerce'), desc: t('ucEcommerceDesc') },
+            { icon: User, title: t('ucProfile'), desc: t('ucProfileDesc') },
+            { icon: Share2, title: t('ucSocial'), desc: t('ucSocialDesc') },
+            { icon: Presentation, title: t('ucPresentation'), desc: t('ucPresentationDesc') },
+            { icon: Palette, title: t('ucDesign'), desc: t('ucDesignDesc') },
+            { icon: CreditCard, title: t('ucIdPhoto'), desc: t('ucIdPhotoDesc') },
+          ].map((uc) => (
+            <div key={uc.title} className={styles.ucCard}>
+              <div className={styles.ucIcon}><uc.icon size={18} /></div>
+              <h3 className={styles.ucTitle}>{uc.title}</h3>
+              <p className={styles.ucDesc}>{uc.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══ FORMATS & ENGINES ══════════════════════════════ */}
+      <section className={styles.sFormats}>
+        <div className={styles.secHead}>
+          <h2 className={styles.secTitle}>{t('formatsTitle')}</h2>
+          <p className={styles.secSub}>{t('formatsSub')}</p>
+        </div>
+
+        <div className={styles.fmGrid}>
+          <div className={styles.fmCard}>
+            <h3 className={styles.fmCardTitle}>{t('formatsInput')}</h3>
+            <ul className={styles.fmList}>
+              <li>{t('formatsJpg')}</li>
+              <li>{t('formatsPng')}</li>
+              <li>{t('formatsWebp')}</li>
+              <li>{t('formatsBmp')}</li>
+            </ul>
+            <p className={styles.fmNote}>{t('formatsMaxSize')}</p>
+          </div>
+          <div className={styles.fmCard}>
+            <h3 className={styles.fmCardTitle}>{t('formatsOutput')}</h3>
+            <ul className={styles.fmList}>
+              <li>{t('formatsOutputPng')}</li>
+            </ul>
+          </div>
+          <div className={styles.fmCard}>
+            <h3 className={styles.fmCardTitle}>{t('formatsEngines')}</h3>
+            <ul className={styles.fmEngineList}>
+              <li><strong>{t('engineImglyName')}</strong><span>{t('engineImglyInfo')}</span></li>
+              <li><strong>{t('engineTransformersName')}</strong><span>{t('engineTransformersInfo')}</span></li>
+              <li><strong>{t('engineRembgName')}</strong><span>{t('engineRembgInfo')}</span></li>
+            </ul>
+          </div>
         </div>
       </section>
 
