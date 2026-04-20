@@ -159,6 +159,35 @@
   animation: previewIn 400ms var(--ease-out-expo) both;
 }
 
+/* Re-upload hover overlay on original image */
+.reuploadWrap {
+  position: relative;
+}
+
+.reuploadOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: rgba(28, 25, 23, 0.45);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 12px;
+  opacity: 0;
+  transition: opacity 150ms var(--ease-out-quart);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.reuploadWrap:hover .reuploadOverlay {
+  opacity: 1;
+}
+
 @keyframes previewIn {
   0%   { opacity: 0; transform: scale(1.03); filter: blur(8px); }
   60%  { filter: blur(0); }

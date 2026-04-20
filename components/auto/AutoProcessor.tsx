@@ -245,12 +245,20 @@ export default function AutoProcessor() {
           {/* Original */}
           <div className="p-3">
             <p className="text-[11px] font-semibold text-[var(--text-tertiary)] uppercase tracking-wider mb-2">{t('original')}</p>
-            <div className="relative aspect-square rounded-xl overflow-hidden bg-[var(--bg-secondary)]">
+            <div
+              className={`relative aspect-square rounded-xl overflow-hidden bg-[var(--bg-secondary)] cursor-pointer group ${styles.reuploadWrap}`}
+              onClick={handleReset}
+              title={tc('reUpload')}
+            >
               <img
                 src={uploadedImage.dataUrl}
-                className={`absolute inset-0 w-full h-full object-contain ${styles.previewFadeIn}`}
+                className={`absolute inset-0 w-full h-full object-contain ${styles.previewFadeIn} transition-opacity duration-150 group-hover:opacity-60`}
                 alt={uploadedImage.file.name}
               />
+              <div className={styles.reuploadOverlay}>
+                <RefreshCcw size={20} />
+                <span>{tc('reUpload')}</span>
+              </div>
             </div>
             <p className="text-[11px] text-[var(--text-tertiary)] mt-1.5 truncate">
               {uploadedImage.file.name} · {uploadedImage.sizeKB > 1024 ? (uploadedImage.sizeKB / 1024).toFixed(1) + ' MB' : uploadedImage.sizeKB + ' KB'}
