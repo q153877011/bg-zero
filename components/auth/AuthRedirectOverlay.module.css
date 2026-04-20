@@ -1,0 +1,92 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(12, 11, 15, 0.72);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  backdrop-filter: blur(16px) saturate(1.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: overlay-in 240ms var(--ease-out-quart) both;
+}
+
+@keyframes overlay-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 40px 56px;
+  background: #18171C;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4);
+  animation: card-in 400ms var(--ease-out-expo) both;
+}
+
+@keyframes card-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.logoRing {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+}
+
+.logoRingOrbit {
+  position: absolute;
+  inset: 0;
+  border: 2px solid transparent;
+  border-top-color: var(--accent-primary);
+  border-right-color: #8B5CF6;
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+}
+
+.logoCenter {
+  width: 48px;
+  height: 48px;
+  background: #1E1D23;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 18px;
+  color: rgba(245, 244, 242, 0.90);
+  letter-spacing: -0.01em;
+}
+
+.sub {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: rgba(245, 244, 242, 0.35);
+}
+
+.progress {
+  width: 200px;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(99, 102, 241, 0.1);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-primary), #8B5CF6);
+  transition: width 100ms linear;
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.6);
+}

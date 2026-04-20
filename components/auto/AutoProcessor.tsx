@@ -9,6 +9,9 @@ import { useDownload } from '@/lib/hooks/useDownload'
 import type { UploadedImage } from '@/lib/hooks/useImageUpload'
 import EngineSelector from '@/components/auto/EngineSelector'
 import EngineWarningModal from '@/components/auto/EngineWarningModal'
+import EngineLoadingStage from '@/components/auto/EngineLoadingStage'
+import DownloadButton from '@/components/shared/DownloadButton'
+import { useDelayedState } from '@/lib/hooks/useDelayedState'
 import styles from './AutoProcessor.module.css'
 
 const engineLabels: Record<EngineType, string> = {
@@ -150,6 +153,8 @@ export default function AutoProcessor() {
     [uploadedImage, getResultFilename]
   )
 
+  const showEngineLoading = useDelayedState(isLoadingEngine, { showAfter: 200, hideAfter: 400 })
+
   // Upload zone (when no image)
   if (!uploadedImage) {
     return (
@@ -200,7 +205,7 @@ export default function AutoProcessor() {
           <div className="flex items-center gap-2">
             <div
               className={`w-2 h-2 rounded-full ${
-                isProcessing ? 'bg-amber-400 animate-pulse' : resultBlob ? 'bg-emerald-400' : 'bg-[var(--text-tertiary)]'
+                isProcessing ? 'bg-amber-400 animate-pulse' : resultBlob ? `bg-emerald-400 ${styles.dotSuccess}` : 'bg-[var(--text-tertiary)]'
               }`}
             />
             <span className="text-[13px] font-medium text-[var(--text-secondary)]">{statusText}</span>
@@ -234,13 +239,14 @@ export default function AutoProcessor() {
             <div className={`relative aspect-square rounded-xl overflow-hidden ${resultBlob ? styles.checkerboard : 'bg-[var(--bg-secondary)]'}`}>
               {/* Processing overlay */}
               {isProcessing && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-[rgba(250,250,249,0.85)] backdrop-blur-sm z-10">
-                  <div className="w-8 h-8 border-2 border-[var(--accent-primary)] border-t-transparent rounded-full animate-spin" />
-                  <div className="w-32 text-center">
-                    <div className="progress-bar mb-1">
-                      <div className="progress-bar-fill" style={{ width: `${processProgress}%` }} />
+                <div className={styles.processingOverlay}>
+                  <div className={styles.scanLine} />
+                  <div className={styles.processingCore}>
+                    <div className={styles.auroraPulse} />
+                    <span className={styles.processingPct}>{processProgress}%</span>
+                    <div className={styles.miniProgress}>
+                      <div className={styles.miniProgressFill} style={{ width: `${processProgress}%` }} />
                     </div>
-                    <span className="text-[11px] text-[var(--text-secondary)]">{processProgress}%</span>
                   </div>
                 </div>
               )}
@@ -249,7 +255,7 @@ export default function AutoProcessor() {
               {resultUrl && (
                 <img
                   src={resultUrl}
-                  className="absolute inset-0 w-full h-full object-contain"
+                  className={`absolute inset-0 w-full h-full object-contain ${styles.resultReveal}`}
                   alt={t('resultAlt')}
                 />
               )}
@@ -273,7 +279,7 @@ export default function AutoProcessor() {
 
       {/* Error Banner */}
       {error && (
-        <div className="flex items-start gap-3 px-4 py-3 rounded-xl bg-red-50 border border-red-100">
+        <div className={`flex items-start gap-3 px-4 py-3 rounded-xl bg-red-50 border border-red-100 ${styles.errorShake}`}>
           <AlertCircle size={16} className="text-red-500 flex-shrink-0 mt-0.5" />
           <div className="flex-1 min-w-0">
             <p className="text-[13px] font-medium text-red-700">{t('errorTitle')}</p>
@@ -331,22 +337,12 @@ export default function AutoProcessor() {
           )}
         </button>
 
-        {/* DownloadButton placeholder */}
         {resultBlob && (
-          <button
+          <DownloadButton
+            blob={resultBlob}
+            filename={downloadFilename}
             className="btn btn-ghost btn-lg"
-            onClick={() => {
-              if (!resultBlob) return
-              const url = URL.createObjectURL(resultBlob)
-              const a = document.createElement('a')
-              a.href = url
-              a.download = downloadFilename
-              a.click()
-              setTimeout(() => URL.revokeObjectURL(url), 5000)
-            }}
-          >
-            {t('btnDownload')}
-          </button>
+          />
         )}
       </div>
 
@@ -387,6 +383,14 @@ export default function AutoProcessor() {
           </div>
         )}
       </EngineWarningModal>
+
+      <EngineLoadingStage
+        show={showEngineLoading}
+        engineName={engineLabels[currentEngine]}
+        stageText={engineLoadText || t('statusLoading')}
+        progress={engineLoadProgress}
+        hint={t('tip5')}
+      />
     </div>
   )
 }

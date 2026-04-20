@@ -23,7 +23,10 @@
     "footerMotto": "用心打造 · 本地优先",
     "hidePassword": "隐藏密码",
     "showPassword": "显示密码",
-    "loginLabel": "登录账号"
+    "loginLabel": "登录账号",
+    "preparing": "准备中...",
+    "downloaded": "已下载",
+    "redirectingBack": "马上就回来"
   },
   "home": {
     "badge": "AI 背景去除 · 纯本地运行 · 完全免费",

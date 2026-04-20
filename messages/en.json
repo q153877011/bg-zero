@@ -23,7 +23,10 @@
     "footerMotto": "Made with care · Local first",
     "hidePassword": "Hide password",
     "showPassword": "Show password",
-    "loginLabel": "Sign in to your account"
+    "loginLabel": "Sign in to your account",
+    "preparing": "Preparing...",
+    "downloaded": "Downloaded",
+    "redirectingBack": "You'll be back in a moment"
   },
   "home": {
     "badge": "AI Background Removal · Runs in Browser · Completely Free",

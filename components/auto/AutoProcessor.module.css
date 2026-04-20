@@ -22,3 +22,82 @@
   background-size: 16px 16px;
   background-position: 0 0, 0 8px, 8px -8px, -8px 0;
 }
+
+/* Processing overlay with scan-line */
+.processingOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background: rgba(250, 250, 249, 0.88);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  display: grid;
+  place-items: center;
+  animation: fade-in 250ms var(--ease-out-quart);
+  overflow: hidden;
+}
+
+.scanLine {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(180deg, transparent, rgba(99, 102, 241, 0.25), transparent);
+  animation: scan-sweep 2s var(--ease-out-quart) infinite;
+  pointer-events: none;
+}
+
+.processingCore {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.auroraPulse {
+  width: 48px;
+  height: 48px;
+  background: radial-gradient(circle, var(--accent-primary) 0%, rgba(139, 92, 246, 0.4) 50%, transparent 80%);
+  border-radius: 50%;
+  animation: aurora-pulse 2s var(--ease-out-quart) infinite;
+}
+
+.processingPct {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--accent-primary);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.miniProgress {
+  width: 80px;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(99, 102, 241, 0.12);
+  overflow: hidden;
+}
+
+.miniProgressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-primary), #8B5CF6);
+  transition: width 250ms var(--ease-out-quart);
+}
+
+/* Result reveal */
+.resultReveal {
+  animation: reveal-mask 800ms var(--ease-out-expo) forwards;
+}
+
+/* Status dot success pop */
+.dotSuccess {
+  animation: dot-pop 400ms var(--ease-spring);
+}
+
+/* Error shake */
+.errorShake {
+  animation: shake-once 400ms var(--ease-out-quart);
+}

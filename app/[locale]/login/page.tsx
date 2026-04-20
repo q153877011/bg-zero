@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import { signIn } from '@/lib/auth-client'
 import { useAnalytics } from '@/lib/hooks/useAnalytics'
+import AuthRedirectOverlay from '@/components/auth/AuthRedirectOverlay'
 import styles from './page.module.css'
 import LanguageSwitcher from '@/components/shared/LanguageSwitcher'
 
@@ -18,6 +19,7 @@ export default function LoginPage() {
   const [isEmailLoading, setIsEmailLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
   const [authError, setAuthError] = useState<string | null>(null)
+  const [redirectingProvider, setRedirectingProvider] = useState<'google' | null>(null)
 
   const [form, setForm] = useState({ email: '', password: '' })
   const [errors, setErrors] = useState({ email: '', password: '' })
@@ -50,11 +52,13 @@ export default function LoginPage() {
 
   async function signInWithGoogle() {
     setIsGoogleLoading(true)
+    setRedirectingProvider('google')
     setAuthError(null)
     try {
       await signIn.social({ provider: 'google', callbackURL: '/auto' })
       track('sign_in', { provider: 'google' })
     } catch {
+      setRedirectingProvider(null)
       setAuthError(t('errGoogleFailed'))
     } finally {
       setIsGoogleLoading(false)
@@ -198,7 +202,7 @@ export default function LoginPage() {
           </div>
 
           {/* ── Email + Password form ── */}
-          <form className={styles.lpcForm} onSubmit={signInWithEmail} noValidate>
+          <form className={`${styles.lpcForm} ${isEmailLoading ? styles.lpcFormPending : ''}`} onSubmit={signInWithEmail} noValidate>
             {/* Email */}
             <div className={styles.lfField}>
               <label className={styles.lfLabel} htmlFor="login-email">{t('emailLabel')}</label>
@@ -319,6 +323,11 @@ export default function LoginPage() {
         </div>
       </div>
 
+      <AuthRedirectOverlay
+        provider={redirectingProvider}
+        message={t('googleRedirecting')}
+        subtitle={tc('redirectingBack')}
+      />
     </div>
   )
 }
