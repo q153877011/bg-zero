@@ -45,7 +45,7 @@ export default async function LocaleLayout({
   const messages = await getMessages()
 
   return (
-    <html lang={locale === 'zh' ? 'zh-CN' : 'en'} className="h-full antialiased">
+    <html lang={locale === 'zh' ? 'zh-CN' : 'en'} className="h-full antialiased" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
