@@ -8,7 +8,7 @@ const pool = new Pool({
   idleTimeoutMillis: 30_000,
   connectionTimeoutMillis: 5_000,
   ssl: process.env.NODE_ENV === 'production'
-    ? { rejectUnauthorized: true, ca: process.env.DB_SSL_CA || undefined }
+    ? { rejectUnauthorized: false }
     : false,
 })
 
