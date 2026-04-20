@@ -45,10 +45,6 @@ export default function ManualPage() {
     { key: 'Ctrl+Y', label: t('shortcutRedo') },
   ], [t])
 
-  useEffect(() => {
-    track('page_view', { page: '/manual' })
-  }, [track])
-
   // ---- Refs ----
   const [uploadedImage, setUploadedImage] = useState<UploadedImage | null>(null)
   const [hasResult, setHasResult] = useState(false)

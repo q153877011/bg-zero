@@ -1,22 +1,15 @@
 'use client'
 
-import { useEffect, useMemo } from 'react'
+import { useMemo } from 'react'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import { Sparkles, ShieldCheck, Cpu, Layers, Image as ImageIcon, Upload, Download, Paintbrush, ShoppingBag, User, Share2, Presentation, Palette, CreditCard } from 'lucide-react'
-import { useAnalytics } from '@/lib/hooks/useAnalytics'
 import FAQSection from '@/components/seo/FAQSection'
 import styles from './page.module.css'
 
 export default function HomePage() {
-  const { track } = useAnalytics()
   const t = useTranslations('home')
-  const tc = useTranslations('common')
   const tf = useTranslations('faq')
-
-  useEffect(() => {
-    track('page_view', { page: '/' })
-  }, [track])
 
   const stats = useMemo(() => [
     { icon: ShieldCheck, label: t('statPrivacy') },

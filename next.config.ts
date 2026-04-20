@@ -75,6 +75,28 @@ const nextConfig: NextConfig = {
           { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
         ],
       },
+      // OG images — week-long cache, reduces crawler & social scraper hits
+      {
+        source: "/og/:path*",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=604800, stale-while-revalidate=86400" },
+        ],
+      },
+      // Service worker must NOT be cached by the browser / CDN,
+      // otherwise SW updates would never reach users.
+      {
+        source: "/model-cache-sw.js",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=0, must-revalidate" },
+        ],
+      },
+      // Static icons / favicon — day-long cache
+      {
+        source: "/:path*.(svg|png|ico|jpg|jpeg|webp|gif)",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=604800" },
+        ],
+      },
     ];
   },
 

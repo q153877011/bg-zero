@@ -89,11 +89,11 @@ export default function AppFooter() {
 
       {/* Legal links row */}
       <div className={styles['f-legal-row']}>
-        <Link href="/privacy" className={styles['f-legal-link']}>{tl('privacyPolicy')}</Link>
+        <Link href="/privacy" prefetch={false} className={styles['f-legal-link']}>{tl('privacyPolicy')}</Link>
         <span className={styles['f-legal-sep']} aria-hidden="true" />
-        <Link href="/terms" className={styles['f-legal-link']}>{tl('termsOfService')}</Link>
+        <Link href="/terms" prefetch={false} className={styles['f-legal-link']}>{tl('termsOfService')}</Link>
         <span className={styles['f-legal-sep']} aria-hidden="true" />
-        <Link href="/licenses" className={styles['f-legal-link']}>{tl('licenses')}</Link>
+        <Link href="/licenses" prefetch={false} className={styles['f-legal-link']}>{tl('licenses')}</Link>
         <span className={styles['f-legal-sep']} aria-hidden="true" />
         <a
           href="https://github.com/q153877011/bg-zero"

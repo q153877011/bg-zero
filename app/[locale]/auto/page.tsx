@@ -1,21 +1,15 @@
 'use client'
 
-import { useEffect, useMemo } from 'react'
+import { useMemo } from 'react'
 import { useTranslations } from 'next-intl'
 import { Sparkles, ShieldCheck, Cpu, Zap, Lightbulb, Check } from 'lucide-react'
-import { useAnalytics } from '@/lib/hooks/useAnalytics'
 import AutoProcessor from '@/components/auto/AutoProcessor'
 import styles from './page.module.css'
 
 // definePageMeta({ auth: true }) — handled by proxy
 
 export default function AutoPage() {
-  const { track } = useAnalytics()
   const t = useTranslations('auto')
-
-  useEffect(() => {
-    track('page_view', { page: '/auto' })
-  }, [track])
 
   const tips = useMemo(() => [
     t('tip1'),
