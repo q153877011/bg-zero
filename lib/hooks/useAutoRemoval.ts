@@ -101,24 +101,36 @@ export function useAutoRemoval(t?: (key: string, params?: Record<string, string 
       env.allowLocalModels = false
     }
 
-    const device = isWebGPUAvailable() ? 'webgpu' : 'wasm'
+    const preferredDevice = isWebGPUAvailable() ? 'webgpu' : 'wasm'
 
     let segmenter: any
-    try {
-      segmenter = await pipeline('image-segmentation', 'briaai/RMBG-1.4', {
-        device,
-        dtype: 'fp32',
-        progress_callback: (progress: any) => {
-          if (progress?.status === 'progress' && progress?.total > 0) {
-            setEngineLoadProgress(Math.round((progress.loaded / progress.total) * 100))
-          } else if (progress?.status === 'done') {
-            setEngineLoadProgress(100)
-          }
-        },
-      } as any)
-    } catch (e: any) {
-      console.error('[Transformers.js] pipeline() failed:', e)
-      throw e
+    // Try preferred device first, fallback to wasm if webgpu fails
+    const devicesToTry = preferredDevice === 'webgpu' ? ['webgpu', 'wasm'] as const : ['wasm'] as const
+    for (const device of devicesToTry) {
+      try {
+        if (device === 'wasm' && preferredDevice === 'webgpu') {
+          setEngineLoadText(t ? t('errWebGPU') : 'WebGPU unavailable, falling back to CPU mode...')
+        }
+        segmenter = await pipeline('image-segmentation', 'briaai/RMBG-1.4', {
+          device,
+          dtype: 'fp32',
+          progress_callback: (progress: any) => {
+            if (progress?.status === 'progress' && progress?.total > 0) {
+              setEngineLoadProgress(Math.round((progress.loaded / progress.total) * 100))
+            } else if (progress?.status === 'done') {
+              setEngineLoadProgress(100)
+            }
+          },
+        } as any)
+        break // success
+      } catch (e: any) {
+        console.error(`[Transformers.js] pipeline() failed with device=${device}:`, e)
+        if (device === devicesToTry[devicesToTry.length - 1]) {
+          // Last device option also failed
+          throw e
+        }
+        // Otherwise try next device
+      }
     }
 
     return {
