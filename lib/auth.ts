@@ -142,7 +142,7 @@ export const auth = betterAuth({
         `,
       })
       if (error) {
-        console.error('[Auth] Failed to send password reset email:', JSON.stringify(error))
+        console.error('[Auth] Failed to send password reset email:', (error as any)?.statusCode || 'unknown error')
         throw new Error('Failed to send email, please try again later')
       }
     },
@@ -193,7 +193,7 @@ export const auth = betterAuth({
         `,
       })
       if (error) {
-        console.error('[Auth] Failed to send verification email:', JSON.stringify(error))
+        console.error('[Auth] Failed to send verification email:', (error as any)?.statusCode || 'unknown error')
         throw new Error('Failed to send email, please try again later')
       }
     },

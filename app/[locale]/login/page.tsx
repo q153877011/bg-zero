@@ -312,8 +312,8 @@ export default function LoginPage() {
           {/* Legal */}
           <p className={styles.lpcLegal}>
             {t('legalText')}
-            <a href="#" className={styles.lplLink} aria-disabled="true">{t('termsOfService')}</a>{t('and')}
-            <a href="#" className={styles.lplLink} aria-disabled="true">{t('privacyPolicy')}</a>
+            <Link href="/terms" className={styles.lplLink}>{t('termsOfService')}</Link>{t('and')}
+            <Link href="/privacy" className={styles.lplLink}>{t('privacyPolicy')}</Link>
           </p>
 
         </div>

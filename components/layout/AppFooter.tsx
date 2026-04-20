@@ -1,10 +1,12 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
+import { Link } from '@/i18n/navigation'
 import styles from './AppFooter.module.css'
 
 export default function AppFooter() {
   const t = useTranslations('common')
+  const tl = useTranslations('legal')
   return (
     <footer className={styles['app-footer']} role="contentinfo">
       {/* Decorative background layer */}
@@ -85,9 +87,31 @@ export default function AppFooter() {
         </div>
       </div>
 
+      {/* Legal links row */}
+      <div className={styles['f-legal-row']}>
+        <Link href="/privacy" className={styles['f-legal-link']}>{tl('privacyPolicy')}</Link>
+        <span className={styles['f-legal-sep']} aria-hidden="true" />
+        <Link href="/terms" className={styles['f-legal-link']}>{tl('termsOfService')}</Link>
+        <span className={styles['f-legal-sep']} aria-hidden="true" />
+        <Link href="/licenses" className={styles['f-legal-link']}>{tl('licenses')}</Link>
+        <span className={styles['f-legal-sep']} aria-hidden="true" />
+        <a
+          href="https://github.com/bg-zero/bg-zero-next"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles['f-legal-link']}
+        >
+          {tl('sourceCode')} (AGPL-3.0)
+        </a>
+        <span className={styles['f-legal-sep']} aria-hidden="true" />
+        <a href="mailto:abuse@bg-zero.tech" className={styles['f-legal-link']}>
+          {tl('reportAbuse')}
+        </a>
+      </div>
+
       {/* Bottom bar */}
       <div className={styles['f-bottom']}>
-        <span>© {new Date().getFullYear()} BG Zero</span>
+        <span>&copy; {new Date().getFullYear()} BG Zero. {tl('agplNotice')}</span>
         <span className={styles['f-sep']} aria-hidden="true" />
         <span>{t('footerMotto')}</span>
       </div>

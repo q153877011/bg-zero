@@ -34,8 +34,19 @@ const securityHeaders = [
   },
   {
     key: "Content-Security-Policy",
-    value:
-      "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob:; style-src 'self' 'unsafe-inline' https://api.fontshare.com; font-src 'self' https://cdn.fontshare.com; img-src 'self' data: https: blob:; connect-src 'self' https: blob:; worker-src 'self' blob:; frame-ancestors 'none';",
+    value: [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: https://www.googletagmanager.com",
+      "style-src 'self' 'unsafe-inline' https://api.fontshare.com",
+      "font-src 'self' https://cdn.fontshare.com data:",
+      "img-src 'self' data: blob: https://lh3.googleusercontent.com https://*.huggingface.co",
+      "connect-src 'self' blob: https://huggingface.co https://*.huggingface.co https://cdn-lfs.huggingface.co https://cdn-lfs-us-1.huggingface.co https://www.google-analytics.com https://www.googletagmanager.com",
+      "worker-src 'self' blob:",
+      "frame-ancestors 'none'",
+      "form-action 'self'",
+      "base-uri 'self'",
+      "upgrade-insecure-requests",
+    ].join('; '),
   },
 ];
 
