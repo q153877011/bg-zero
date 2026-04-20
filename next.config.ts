@@ -40,7 +40,7 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline' https://api.fontshare.com",
       "font-src 'self' https://cdn.fontshare.com data:",
       "img-src 'self' data: blob: https://lh3.googleusercontent.com https://*.huggingface.co",
-      "connect-src 'self' blob: https://huggingface.co https://*.huggingface.co https://cdn-lfs.huggingface.co https://cdn-lfs-us-1.huggingface.co https://www.google-analytics.com https://www.googletagmanager.com",
+      "connect-src 'self' blob: https://huggingface.co https://*.huggingface.co https://cdn-lfs.huggingface.co https://cdn-lfs-us-1.huggingface.co https://*.myqcloud.com https://www.google-analytics.com https://www.googletagmanager.com",
       "worker-src 'self' blob:",
       "frame-ancestors 'none'",
       "form-action 'self'",
