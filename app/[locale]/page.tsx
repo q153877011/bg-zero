@@ -221,9 +221,8 @@ export default function HomePage() {
               <tr>
                 <th></th>
                 <th className={styles.whyThHighlight}>{t('whyBgZero')}</th>
-                <th>{t('whyRemoveBg')}</th>
-                <th>{t('whyCanva')}</th>
-                <th>{t('whyPhotoshop')}</th>
+                <th>{t('whyOtherCloud')}</th>
+                <th>{t('whyOtherDesktop')}</th>
               </tr>
             </thead>
             <tbody>
@@ -231,27 +230,23 @@ export default function HomePage() {
                 <td className={styles.whyLabel}>{t('whyPrivacy')}</td>
                 <td className={styles.whyGood}>{t('whyLocalDevice')}</td>
                 <td>{t('whyCloudUpload')}</td>
-                <td>{t('whyCloudUpload')}</td>
                 <td>{t('whyLocalDevice')}</td>
               </tr>
               <tr>
                 <td className={styles.whyLabel}>{t('whyPrice')}</td>
                 <td className={styles.whyGood}>{t('whyFree')}</td>
                 <td>{t('whyFreemium')}</td>
-                <td>{t('whyFreemium')}</td>
-                <td>{t('whySubscription')}</td>
+                <td>{t('whyPaid')}</td>
               </tr>
               <tr>
                 <td className={styles.whyLabel}>{t('whyWatermark')}</td>
                 <td className={styles.whyGood}>{t('whyNone')}</td>
                 <td>{t('whyOnFree')}</td>
                 <td>{t('whyNone')}</td>
-                <td>{t('whyNone')}</td>
               </tr>
               <tr>
                 <td className={styles.whyLabel}>{t('whyBatchLimit')}</td>
                 <td className={styles.whyGood}>{t('whyUnlimited')}</td>
-                <td>{t('whyLimited')}</td>
                 <td>{t('whyLimited')}</td>
                 <td>{t('whyUnlimited')}</td>
               </tr>
