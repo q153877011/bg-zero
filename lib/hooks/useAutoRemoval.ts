@@ -104,6 +104,7 @@ export function useAutoRemoval(t?: (key: string, params?: Record<string, string 
     const preferredDevice = isWebGPUAvailable() ? 'webgpu' : 'wasm'
 
     let segmenter: any
+    let activeDevice: string = preferredDevice
     // Try preferred device first, fallback to wasm if webgpu fails
     const devicesToTry = preferredDevice === 'webgpu' ? ['webgpu', 'wasm'] as const : ['wasm'] as const
     for (const device of devicesToTry) {
@@ -122,15 +123,24 @@ export function useAutoRemoval(t?: (key: string, params?: Record<string, string 
             }
           },
         } as any)
+        activeDevice = device
         break // success
       } catch (e: any) {
         console.error(`[Transformers.js] pipeline() failed with device=${device}:`, e)
         if (device === devicesToTry[devicesToTry.length - 1]) {
-          // Last device option also failed
           throw e
         }
-        // Otherwise try next device
       }
+    }
+
+    // Helper: rebuild pipeline with wasm if inference fails on webgpu
+    async function rebuildWithWasm() {
+      console.warn('[Transformers.js] WebGPU inference failed, rebuilding pipeline with WASM...')
+      segmenter = await pipeline('image-segmentation', 'briaai/RMBG-1.4', {
+        device: 'wasm',
+        dtype: 'fp32',
+      } as any)
+      activeDevice = 'wasm'
     }
 
     return {
@@ -140,7 +150,18 @@ export function useAutoRemoval(t?: (key: string, params?: Record<string, string 
         const url = URL.createObjectURL(image as Blob)
         onProgress?.(0.3)
         try {
-          const results: any[] = await (segmenter as any)(url)
+          let results: any[]
+          try {
+            results = await (segmenter as any)(url)
+          } catch (inferenceErr: any) {
+            // If webgpu inference fails at runtime, fallback to wasm and retry
+            if (activeDevice === 'webgpu') {
+              await rebuildWithWasm()
+              results = await (segmenter as any)(url)
+            } else {
+              throw inferenceErr
+            }
+          }
           onProgress?.(0.9)
           const result = results?.[0]
           if (!result?.mask) throw new Error('No mask returned')
