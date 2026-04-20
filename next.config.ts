@@ -68,6 +68,13 @@ const nextConfig: NextConfig = {
         source: "/(.*)",
         headers: securityHeaders,
       },
+      // Long cache for static model/WASM files served from public/
+      {
+        source: "/:path*.(wasm|onnx|ort|bin)",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+        ],
+      },
     ];
   },
 

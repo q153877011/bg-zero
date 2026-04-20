@@ -101,6 +101,10 @@ export function useAutoRemoval(t?: (key: string, params?: Record<string, string 
       env.allowLocalModels = false
     }
 
+    // Ensure browser Cache API is used for model files and WASM binaries
+    env.useBrowserCache = true
+    env.useWasmCache = true
+
     const preferredDevice = isWebGPUAvailable() ? 'webgpu' : 'wasm'
 
     let segmenter: any
