@@ -104,7 +104,7 @@ export default function AppFooter() {
           {tl('sourceCode')} (AGPL-3.0)
         </a>
         <span className={styles['f-legal-sep']} aria-hidden="true" />
-        <a href="mailto:abuse@bg-zero.tech" className={styles['f-legal-link']}>
+        <a href="mailto:abuse@bg-zero.online" className={styles['f-legal-link']}>
           {tl('reportAbuse')}
         </a>
       </div>

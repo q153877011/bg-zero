@@ -4,7 +4,7 @@
 
 If you discover a security vulnerability in BG-Zero, please report it responsibly.
 
-**Email:** security@bg-zero.tech
+**Email:** security@bg-zero.online
 
 Please do NOT open a public GitHub issue for security vulnerabilities.
 
@@ -29,7 +29,7 @@ Only the latest `main` branch is actively maintained. We recommend always runnin
 
 The following are in scope:
 
-- The BG-Zero web application (https://bg-zero.tech)
+- The BG-Zero web application (https://www.bg-zero.online)
 - The BG-Zero source code in this repository
 - Authentication and session management
 - API endpoints

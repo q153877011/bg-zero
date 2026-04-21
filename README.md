@@ -9,7 +9,7 @@
 
 BG-Zero is a free, open source, privacy-first background removal tool. Your images never leave your device: all AI inference happens locally via WebAssembly and WebGPU. No upload. No watermark. No signup required.
 
-[🌐 Live site](https://bg-zero.tech) · [💻 Source code](https://github.com/) · [📄 License: AGPL-3.0](./LICENSE)
+[🌐 Live site](https://www.bg-zero.online) · [💻 Source code](https://github.com/) · [📄 License: AGPL-3.0](./LICENSE)
 
 ---
 
@@ -72,7 +72,7 @@ For tricky images where AI struggles (logos, line art, uniform backgrounds), swi
 - **Strict CSP** on every route.
 - Only anonymous usage metrics (no image content) are collected to improve the tool.
 
-Read the full [Privacy Policy](https://bg-zero.tech/privacy) and [Terms of Service](https://bg-zero.tech/terms).
+Read the full [Privacy Policy](https://www.bg-zero.online/privacy) and [Terms of Service](https://www.bg-zero.online/terms).
 
 ---
 
@@ -96,11 +96,11 @@ Released under the [GNU Affero General Public License v3.0](./LICENSE). If you r
 
 ## Security
 
-Found a vulnerability? Please email **security@bg-zero.tech**. See [SECURITY.md](./SECURITY.md).
+Found a vulnerability? Please email **security@bg-zero.online**. See [SECURITY.md](./SECURITY.md).
 
 ## Report abuse
 
-Report misuse of the service to **abuse@bg-zero.tech**.
+Report misuse of the service to **abuse@bg-zero.online**.
 
 ---
 

@@ -7,11 +7,11 @@ export function GET() {
   const expires = new Date(Date.now() + 365 * 24 * 3600 * 1000).toISOString()
 
   const body = [
-    'Contact: mailto:security@bg-zero.tech',
+    'Contact: mailto:security@bg-zero.online',
     `Expires: ${expires}`,
     'Preferred-Languages: en, zh',
-    'Canonical: https://bg-zero.tech/.well-known/security.txt',
-    'Policy: https://bg-zero.tech/security',
+    'Canonical: https://www.bg-zero.online/.well-known/security.txt',
+    'Policy: https://www.bg-zero.online/security',
   ].join('\n')
 
   return new Response(body, {
