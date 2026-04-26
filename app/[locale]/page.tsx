@@ -37,12 +37,12 @@ export default function HomePage() {
   ], [t])
 
   const useCases = useMemo(() => [
-    { icon: ShoppingBag, title: t('ucEcommerce'), desc: t('ucEcommerceDesc') },
-    { icon: User, title: t('ucProfile'), desc: t('ucProfileDesc') },
-    { icon: Share2, title: t('ucSocial'), desc: t('ucSocialDesc') },
-    { icon: Presentation, title: t('ucPresentation'), desc: t('ucPresentationDesc') },
-    { icon: Palette, title: t('ucDesign'), desc: t('ucDesignDesc') },
-    { icon: CreditCard, title: t('ucIdPhoto'), desc: t('ucIdPhotoDesc') },
+    { icon: ShoppingBag, title: t('ucEcommerce'), desc: t('ucEcommerceDesc'), href: '/use-cases/ecommerce' },
+    { icon: User, title: t('ucProfile'), desc: t('ucProfileDesc'), href: '/use-cases/profile-picture' },
+    { icon: Share2, title: t('ucSocial'), desc: t('ucSocialDesc'), href: undefined },
+    { icon: Presentation, title: t('ucPresentation'), desc: t('ucPresentationDesc'), href: undefined },
+    { icon: Palette, title: t('ucDesign'), desc: t('ucDesignDesc'), href: undefined },
+    { icon: CreditCard, title: t('ucIdPhoto'), desc: t('ucIdPhotoDesc'), href: '/use-cases/id-photo' },
   ], [t])
 
   return (
@@ -256,13 +256,24 @@ export default function HomePage() {
         </div>
 
         <div className={styles.ucGrid}>
-          {useCases.map((uc) => (
-            <div key={uc.title} className={styles.ucCard}>
-              <div className={styles.ucIcon}><uc.icon size={18} /></div>
-              <h3 className={styles.ucTitle}>{uc.title}</h3>
-              <p className={styles.ucDesc}>{uc.desc}</p>
-            </div>
-          ))}
+          {useCases.map((uc) => {
+            const content = (
+              <>
+                <div className={styles.ucIcon}><uc.icon size={18} /></div>
+                <h3 className={styles.ucTitle}>{uc.title}</h3>
+                <p className={styles.ucDesc}>{uc.desc}</p>
+              </>
+            )
+            return uc.href ? (
+              <Link key={uc.title} href={uc.href} className={styles.ucCard}>
+                {content}
+              </Link>
+            ) : (
+              <div key={uc.title} className={styles.ucCard}>
+                {content}
+              </div>
+            )
+          })}
         </div>
       </section>
 

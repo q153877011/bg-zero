@@ -4,13 +4,10 @@ import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import { ShieldCheck, Sparkles, Code } from 'lucide-react'
 import TrademarkDisclaimer from '@/components/seo/TrademarkDisclaimer'
-import FAQSection from '@/components/seo/FAQSection'
-import { COMPARE_FAQ_KEYS } from '@/lib/constants/faq'
 import styles from './page.module.css'
 
-export default function CompareRemoveBgPage() {
-  const t = useTranslations('compare')
-  const tc = useTranslations('compareBest')
+export default function CompareIloveimgPage() {
+  const t = useTranslations('compareIloveimg')
 
   const rows = [
     { label: t('rowPrivacy'), bgZero: t('rowPrivacyBgZero'), other: t('rowPrivacyOther') },
@@ -45,7 +42,7 @@ export default function CompareRemoveBgPage() {
                 <tr>
                   <th>{t('featureCol')}</th>
                   <th className={styles.thHighlight}>{t('bgZeroCol')}</th>
-                  <th>{t('removeBgCol')}</th>
+                  <th>{t('iloveimgCol')}</th>
                 </tr>
               </thead>
               <tbody>
@@ -90,18 +87,9 @@ export default function CompareRemoveBgPage() {
         {/* Trademark Disclaimer */}
         <TrademarkDisclaimer
           trademarks={[
-            { name: 'remove.bg', owner: 'Kaleido AI GmbH' },
+            { name: 'iLoveIMG', owner: 'iLovePDF S.L.' },
           ]}
         />
-
-        {/* FAQ */}
-        <section className={styles.seoSection}>
-          <div className={styles.seoHead}>
-            <h2 className={styles.seoTitle}>{tc('faqTitle')}</h2>
-            <p className={styles.seoSub}>{tc('faqSub')}</p>
-          </div>
-          <FAQSection keys={COMPARE_FAQ_KEYS} />
-        </section>
       </div>
     </div>
   )

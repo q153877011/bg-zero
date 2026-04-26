@@ -5,13 +5,17 @@ import { useTranslations } from 'next-intl'
 import { ChevronDown } from 'lucide-react'
 import { FAQ_KEYS } from '@/lib/constants/faq'
 
-export default function FAQSection() {
+interface FAQSectionProps {
+  keys?: readonly string[]
+}
+
+export default function FAQSection({ keys = FAQ_KEYS }: FAQSectionProps) {
   const t = useTranslations('faq')
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
     <div className="space-y-2">
-      {FAQ_KEYS.map((key, i) => {
+      {keys.map((key, i) => {
         const isOpen = openIndex === i
         return (
           <div

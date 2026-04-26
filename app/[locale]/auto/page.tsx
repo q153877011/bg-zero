@@ -2,8 +2,10 @@
 
 import { useMemo } from 'react'
 import { useTranslations } from 'next-intl'
-import { Sparkles, ShieldCheck, Cpu, Zap, Lightbulb, Check } from 'lucide-react'
+import { Sparkles, ShieldCheck, Cpu, Zap, Lightbulb, Check, Upload, Settings, Download } from 'lucide-react'
 import AutoProcessor from '@/components/auto/AutoProcessor'
+import FAQSection from '@/components/seo/FAQSection'
+import { AUTO_FAQ_KEYS } from '@/lib/constants/faq'
 import styles from './page.module.css'
 
 // definePageMeta({ auth: true }) — handled by proxy
@@ -18,6 +20,21 @@ export default function AutoPage() {
     t('tip4'),
     t('tip5'),
     t('tip6'),
+  ], [t])
+
+  const seoSteps = useMemo(() => [
+    { icon: Upload, title: t('seoStep1Title'), desc: t('seoStep1Desc') },
+    { icon: Settings, title: t('seoStep2Title'), desc: t('seoStep2Desc') },
+    { icon: Download, title: t('seoStep3Title'), desc: t('seoStep3Desc') },
+  ], [t])
+
+  const seoWhyItems = useMemo(() => [
+    t('seoWhyPrivacy'),
+    t('seoWhyFree'),
+    t('seoWhyEngines'),
+    t('seoWhyOffline'),
+    t('seoWhyBatch'),
+    t('seoWhyOpen'),
   ], [t])
 
   return (
@@ -71,6 +88,48 @@ export default function AutoPage() {
           </div>
         </div>
       </div>
+
+      {/* ══ SEO: How To ══════════════════════════════════════ */}
+      <section className={styles.seoSection}>
+        <div className={styles.seoHead}>
+          <h2 className={styles.seoTitle}>{t('seoHowTitle')}</h2>
+          <p className={styles.seoSub}>{t('seoHowSub')}</p>
+        </div>
+        <div className={styles.seoSteps}>
+          {seoSteps.map((step, i) => (
+            <div key={i} className={styles.seoStep}>
+              <div className={styles.seoStepNum}>{String(i + 1).padStart(2, '0')}</div>
+              <div className={styles.seoStepIcon}><step.icon size={18} /></div>
+              <h3 className={styles.seoStepTitle}>{step.title}</h3>
+              <p className={styles.seoStepDesc}>{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══ SEO: Why Choose ════════════════════════════════════ */}
+      <section className={styles.seoSection}>
+        <div className={styles.seoHead}>
+          <h2 className={styles.seoTitle}>{t('seoWhyTitle')}</h2>
+        </div>
+        <div className={styles.seoWhyGrid}>
+          {seoWhyItems.map((item) => (
+            <div key={item} className={styles.seoWhyItem}>
+              <span className={styles.seoWhyCheck}><Check size={12} /></span>
+              <span>{item}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══ SEO: FAQ ═══════════════════════════════════════════ */}
+      <section className={styles.seoSection}>
+        <div className={styles.seoHead}>
+          <h2 className={styles.seoTitle}>{t('seoFaqTitle')}</h2>
+          <p className={styles.seoSub}>{t('seoFaqSub')}</p>
+        </div>
+        <FAQSection keys={AUTO_FAQ_KEYS} />
+      </section>
 
     </div>
   )

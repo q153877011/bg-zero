@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback, useMemo } from 'react'
 import { useTranslations } from 'next-intl'
-import { Paintbrush, MousePointerClick, Shield, Undo2, Pipette, SlidersHorizontal, Circle, Info, Keyboard, RefreshCcw, Download } from 'lucide-react'
+import { Paintbrush, MousePointerClick, Shield, Undo2, Pipette, SlidersHorizontal, Circle, Info, Keyboard, RefreshCcw, Download, Check } from 'lucide-react'
 import { floodFillRemove } from '@/lib/utils/canvas'
 import { useColorPicker } from '@/lib/hooks/useColorPicker'
 import { useDownload } from '@/lib/hooks/useDownload'
@@ -15,6 +15,8 @@ import ToolBar from '@/components/manual/ToolBar'
 import ColorPicker from '@/components/manual/ColorPicker'
 import ToleranceSlider from '@/components/manual/ToleranceSlider'
 import MaskBrush from '@/components/manual/MaskBrush'
+import FAQSection from '@/components/seo/FAQSection'
+import { MANUAL_FAQ_KEYS } from '@/lib/constants/faq'
 import styles from './page.module.css'
 
 // definePageMeta({ auth: true }) — handled by proxy
@@ -43,6 +45,21 @@ export default function ManualPage() {
     { key: 'E / 3', label: t('shortcutEraser') },
     { key: 'Ctrl+Z', label: t('shortcutUndo') },
     { key: 'Ctrl+Y', label: t('shortcutRedo') },
+  ], [t])
+
+  const seoSteps = useMemo(() => [
+    { icon: Pipette, title: t('seoStep1Title'), desc: t('seoStep1Desc') },
+    { icon: Shield, title: t('seoStep2Title'), desc: t('seoStep2Desc') },
+    { icon: Paintbrush, title: t('seoStep3Title'), desc: t('seoStep3Desc') },
+  ], [t])
+
+  const seoWhyItems = useMemo(() => [
+    t('seoWhyPrecise'),
+    t('seoWhyMask'),
+    t('seoWhyTolerance'),
+    t('seoWhyUndo'),
+    t('seoWhyCombo'),
+    t('seoWhyLocal'),
   ], [t])
 
   // ---- Refs ----
@@ -405,6 +422,48 @@ export default function ManualPage() {
           </div>
         </div>
       )}
+
+      {/* ══ SEO: How To ══════════════════════════════════════ */}
+      <section className={styles.seoSection}>
+        <div className={styles.seoHead}>
+          <h2 className={styles.seoTitle}>{t('seoHowTitle')}</h2>
+          <p className={styles.seoSub}>{t('seoHowSub')}</p>
+        </div>
+        <div className={styles.seoSteps}>
+          {seoSteps.map((step, i) => (
+            <div key={i} className={styles.seoStep}>
+              <div className={styles.seoStepNum}>{String(i + 1).padStart(2, '0')}</div>
+              <div className={styles.seoStepIcon}><step.icon size={18} /></div>
+              <h3 className={styles.seoStepTitle}>{step.title}</h3>
+              <p className={styles.seoStepDesc}>{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══ SEO: Why Choose ════════════════════════════════════ */}
+      <section className={styles.seoSection}>
+        <div className={styles.seoHead}>
+          <h2 className={styles.seoTitle}>{t('seoWhyTitle')}</h2>
+        </div>
+        <div className={styles.seoWhyGrid}>
+          {seoWhyItems.map((item) => (
+            <div key={item} className={styles.seoWhyItem}>
+              <span className={styles.seoWhyCheck}><Check size={12} /></span>
+              <span>{item}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══ SEO: FAQ ═══════════════════════════════════════════ */}
+      <section className={styles.seoSection}>
+        <div className={styles.seoHead}>
+          <h2 className={styles.seoTitle}>{t('seoFaqTitle')}</h2>
+          <p className={styles.seoSub}>{t('seoFaqSub')}</p>
+        </div>
+        <FAQSection keys={MANUAL_FAQ_KEYS} />
+      </section>
 
     </div>
   )

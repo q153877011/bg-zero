@@ -1,37 +1,29 @@
 .page { padding: 3rem 1.5rem 4rem; background: var(--bg-primary, #FAFAF9); min-height: 100vh; }
 .inner { max-width: 44rem; margin: 0 auto; }
-
 .hero { text-align: center; margin-bottom: 3rem; }
 .heroIcon { width: 56px; height: 56px; border-radius: 14px; background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(139,92,246,0.08)); display: flex; align-items: center; justify-content: center; color: #6366F1; margin: 0 auto 1.25rem; }
 .h1 { font-family: var(--font-heading); font-size: clamp(1.6rem, 4vw, 2.25rem); font-weight: 700; color: var(--text-primary, #1C1917); letter-spacing: -0.02em; margin: 0 0 1rem; }
 .heroSub { font-family: var(--font-body); font-size: 1rem; color: var(--text-secondary, #57534E); line-height: 1.7; max-width: 32rem; margin: 0 auto; }
-
 .section { margin-bottom: 2.5rem; }
 .h2 { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--text-primary, #1C1917); margin: 0 0 1rem; letter-spacing: -0.01em; }
 .paragraph { font-family: var(--font-body); font-size: 0.9375rem; color: var(--text-secondary, #57534E); line-height: 1.7; margin: 0; }
-
-.stepList { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem; }
-.stepItem { display: flex; align-items: center; gap: 0.75rem; font-family: var(--font-body); font-size: 0.9375rem; color: var(--text-secondary, #57534E); padding: 0.75rem 1rem; border-radius: 10px; background: var(--bg-canvas, #fff); border: 1px solid rgba(0,0,0,0.05); }
-.stepNum { width: 28px; height: 28px; border-radius: 8px; background: rgba(99,102,241,0.08); color: #6366F1; font-size: 0.8125rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-
-.benefitList { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem; }
-.benefitItem { display: flex; align-items: flex-start; gap: 0.6rem; font-family: var(--font-body); font-size: 0.9375rem; color: var(--text-secondary, #57534E); line-height: 1.6; }
-.checkIcon { color: #15803D; margin-top: 3px; flex-shrink: 0; }
-
-.cta { text-align: center; padding: 2.5rem; border-radius: 16px; background: linear-gradient(135deg, rgba(99,102,241,0.04), rgba(139,92,246,0.04)); border: 1px solid rgba(99,102,241,0.12); margin-top: 3rem; }
-.ctaTitle { font-family: var(--font-heading); font-size: 1.35rem; font-weight: 700; color: var(--text-primary, #1C1917); margin: 0 0 0.5rem; }
-.ctaSub { font-family: var(--font-body); font-size: 0.9375rem; color: var(--text-secondary, #57534E); margin: 0 0 1.25rem; }
-.ctaBtn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 10px; background: linear-gradient(135deg, #6366F1, #8B5CF6); color: #fff; font-family: var(--font-body); font-size: 0.9375rem; font-weight: 600; text-decoration: none; transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 2px 12px rgba(99,102,241,0.25); }
-.ctaBtn:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(99,102,241,0.35); }
-
 .tableWrap { overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0,0,0,0.06); margin-top: 1rem; }
 .table { width: 100%; border-collapse: collapse; font-family: var(--font-body); font-size: 0.875rem; }
 .table th { padding: 0.875rem 1rem; text-align: left; font-weight: 600; color: var(--text-tertiary, #A8A29E); font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; background: rgba(0,0,0,0.02); border-bottom: 1px solid rgba(0,0,0,0.06); }
 .table td { padding: 0.875rem 1rem; border-bottom: 1px solid rgba(0,0,0,0.04); color: var(--text-secondary, #57534E); }
 .table tr:last-child td { border-bottom: none; }
-.tdLabel { font-weight: 600; color: var(--text-primary, #1C1917); }
-.tdGood { color: #15803D; }
+.stepList { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem; }
+.stepItem { display: flex; align-items: center; gap: 0.75rem; font-family: var(--font-body); font-size: 0.9375rem; color: var(--text-secondary, #57534E); padding: 0.75rem 1rem; border-radius: 10px; background: var(--bg-canvas, #fff); border: 1px solid rgba(0,0,0,0.05); }
+.stepNum { width: 28px; height: 28px; border-radius: 8px; background: rgba(99,102,241,0.08); color: #6366F1; font-size: 0.8125rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.benefitList { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+.benefitItem { display: flex; align-items: flex-start; gap: 0.6rem; font-family: var(--font-body); font-size: 0.9375rem; color: var(--text-secondary, #57534E); line-height: 1.6; }
+.checkIcon { color: #15803D; margin-top: 3px; flex-shrink: 0; }
 .seoSection { margin-bottom: 2.5rem; }
 .seoHead { text-align: center; margin-bottom: 1.5rem; }
 .seoTitle { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--text-primary, #1C1917); margin: 0 0 0.4rem; }
 .seoSub { font-family: var(--font-body); font-size: 13px; color: var(--text-secondary); }
+.cta { text-align: center; padding: 2.5rem; border-radius: 16px; background: linear-gradient(135deg, rgba(99,102,241,0.04), rgba(139,92,246,0.04)); border: 1px solid rgba(99,102,241,0.12); margin-top: 3rem; }
+.ctaTitle { font-family: var(--font-heading); font-size: 1.35rem; font-weight: 700; color: var(--text-primary, #1C1917); margin: 0 0 0.5rem; }
+.ctaSub { font-family: var(--font-body); font-size: 0.9375rem; color: var(--text-secondary, #57534E); margin: 0 0 1.25rem; }
+.ctaBtn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 10px; background: linear-gradient(135deg, #6366F1, #8B5CF6); color: #fff; font-family: var(--font-body); font-size: 0.9375rem; font-weight: 600; text-decoration: none; transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 2px 12px rgba(99,102,241,0.25); }
+.ctaBtn:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(99,102,241,0.35); }

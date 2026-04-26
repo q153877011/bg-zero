@@ -1,16 +1,16 @@
 import { getTranslations } from 'next-intl/server'
 import { buildMetadata } from '@/lib/seo/metadata'
 import { ToolPageJsonLd } from '@/components/seo/JsonLd'
-import { ECOMMERCE_FAQ_KEYS } from '@/lib/constants/faq'
+import { ID_PHOTO_FAQ_KEYS } from '@/lib/constants/faq'
 import { buildPageUrl } from '@/lib/seo/siteConfig'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'seo' })
-  return buildMetadata({ locale, path: '/use-cases/ecommerce', title: t('useCaseEcommerceTitle'), description: t('useCaseEcommerceDescription') })
+  return buildMetadata({ locale, path: '/use-cases/id-photo', title: t('useCaseIdPhotoTitle'), description: t('useCaseIdPhotoDescription') })
 }
 
-export default async function EcommerceLayout({
+export default async function IdPhotoLayout({
   children,
   params,
 }: {
@@ -24,10 +24,10 @@ export default async function EcommerceLayout({
     <>
       <ToolPageJsonLd
         locale={locale}
-        faqKeys={ECOMMERCE_FAQ_KEYS}
-        toolName={t('useCaseEcommerceTitle')}
-        toolDescription={t('useCaseEcommerceDescription')}
-        toolUrl={buildPageUrl(locale, '/use-cases/ecommerce')}
+        faqKeys={ID_PHOTO_FAQ_KEYS}
+        toolName={t('useCaseIdPhotoTitle')}
+        toolDescription={t('useCaseIdPhotoDescription')}
+        toolUrl={buildPageUrl(locale, '/use-cases/id-photo')}
       />
       {children}
     </>

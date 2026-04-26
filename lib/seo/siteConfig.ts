@@ -10,3 +10,10 @@ export const siteConfig = {
 } as const
 
 export type Locale = (typeof siteConfig.locales)[number]
+
+/** Build a full URL for a page, with locale prefix only for non-default locales. */
+export function buildPageUrl(locale: string, path: string): string {
+  return locale === siteConfig.defaultLocale
+    ? `${siteConfig.domain}${path}`
+    : `${siteConfig.domain}/${locale}${path}`
+}

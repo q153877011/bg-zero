@@ -1,0 +1,14 @@
+.page { padding: 3rem 1.5rem 4rem; background: var(--bg-primary, #FAFAF9); min-height: 100vh; }
+.inner { max-width: 52rem; margin: 0 auto; }
+.hero { text-align: center; margin-bottom: 3rem; }
+.h1 { font-family: var(--font-heading); font-size: clamp(1.6rem, 4vw, 2.25rem); font-weight: 700; color: var(--text-primary, #1C1917); letter-spacing: -0.02em; margin: 0 0 0.75rem; }
+.heroSub { font-family: var(--font-body); font-size: 1rem; color: var(--text-secondary, #57534E); }
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+.card { display: block; padding: 1.5rem; border-radius: 14px; border: 1px solid rgba(0,0,0,0.06); background: var(--bg-canvas, #fff); text-decoration: none; transition: transform 0.15s, box-shadow 0.15s; }
+.card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+.cardIcon { color: #6366F1; margin-bottom: 0.75rem; }
+.cardTitle { font-family: var(--font-heading); font-size: 1rem; font-weight: 600; color: var(--text-primary, #1C1917); margin: 0 0 0.5rem; line-height: 1.4; }
+.cardSummary { font-family: var(--font-body); font-size: 0.8125rem; color: var(--text-secondary, #57534E); line-height: 1.6; margin: 0 0 0.75rem; }
+.cardDate { font-family: var(--font-body); font-size: 0.75rem; color: var(--text-tertiary, #A8A29E); }
+.cardArrow { font-family: var(--font-body); font-size: 0.8125rem; color: #6366F1; font-weight: 500; }
+@media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
