@@ -17,6 +17,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/blog/id-photo-background-change', priority: 0.7, changeFrequency: 'monthly' as const },
     { path: '/blog/ecommerce-product-photo', priority: 0.7, changeFrequency: 'monthly' as const },
     { path: '/blog/video-background-removal', priority: 0.7, changeFrequency: 'monthly' as const },
+    { path: '/blog/webp-remove-background', priority: 0.7, changeFrequency: 'monthly' as const },
+    { path: '/blog/private-background-remover', priority: 0.7, changeFrequency: 'monthly' as const },
     { path: '/privacy', priority: 0.3, changeFrequency: 'monthly' as const },
     { path: '/terms', priority: 0.3, changeFrequency: 'monthly' as const },
     { path: '/licenses', priority: 0.3, changeFrequency: 'monthly' as const },

@@ -7,6 +7,14 @@ import styles from './page.module.css'
 
 const articles = [
   {
+    key: 'privacyRemover' as const,
+    href: '/blog/private-background-remover',
+  },
+  {
+    key: 'webpRemoveBg' as const,
+    href: '/blog/webp-remove-background',
+  },
+  {
     key: 'howToRemoveBg' as const,
     href: '/blog/how-to-remove-background',
   },

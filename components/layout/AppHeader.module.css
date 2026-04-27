@@ -87,7 +87,7 @@
   margin-left: 1px;
 }
 
-/* ─── Nav capsule ───────────────────────────────────────────── */
+/* ─── Nav capsule (primary tools) ──────────────────────────── */
 .nav-wrap {
   position: relative;
   display: inline-flex;
@@ -154,7 +154,7 @@
   transform: scale(1.2);
 }
 
-/* ─── Header tail ───────────────────────────────────────────── */
+/* ─── Header tail (secondary nav + utilities) ──────────────── */
 .header-tail {
   display: flex;
   align-items: center;
@@ -162,9 +162,68 @@
   flex-shrink: 0;
 }
 
+/* Secondary text link (Blog) — quiet, doesn't compete with primary nav */
+.tail-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-tertiary);
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  transition:
+    color 0.18s ease,
+    background 0.18s ease;
+  white-space: nowrap;
+}
+
+.tail-link:hover {
+  color: var(--text-primary);
+  background: rgba(28, 25, 23, 0.04);
+}
+
+.tail-link--active {
+  color: var(--text-primary);
+  background: rgba(28, 25, 23, 0.06);
+}
+
+.tail-link-ico {
+  flex-shrink: 0;
+  opacity: 0.65;
+  transition: opacity 0.18s ease;
+}
+
+.tail-link:hover .tail-link-ico,
+.tail-link--active .tail-link-ico {
+  opacity: 1;
+}
+
 .tail-divider {
   display: block;
   width: 1px;
   height: 20px;
   background: rgba(28, 25, 23, 0.08);
+}
+
+/* ─── Responsive ───────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .nav-wrap {
+    display: none;
+  }
+
+  .tail-link {
+    font-size: 12px;
+    padding: 4px 6px;
+  }
+
+  .tail-link span {
+    display: none;
+  }
+
+  .tail-link-ico {
+    opacity: 0.8;
+  }
 }

@@ -2,6 +2,7 @@
   "common": {
     "autoRemove": "自动擦除",
     "manualRemove": "手动去除",
+    "blog": "教程",
     "bgZero": "BG-Zero",
     "reUpload": "重新上传",
     "downloadPng": "下载 PNG",
@@ -467,7 +468,11 @@
     "blogEcommerceTitle": "电商产品白底图制作教程 — 免费批量去背景 | BG-Zero",
     "blogEcommerceDescription": "教你用 AI 免费批量制作电商产品白底图。涵盖淘宝、亚马逊、Shopify 平台规格要求，附高级技巧。",
     "blogVideoTitle": "视频去背景完全指南 — 方法、工具与技巧 (2026) | BG-Zero",
-    "blogVideoDescription": "全面介绍视频去背景的三种方法：实时替换、后期抠像、AI 逐帧处理。对比 OBS、Zoom、Premiere、剪映等工具，附 BG-Zero 截帧去背景教程。"
+    "blogVideoDescription": "全面介绍视频去背景的三种方法：实时替换、后期抠像、AI 逐帧处理。对比 OBS、Zoom、Premiere、剪映等工具，附 BG-Zero 截帧去背景教程。",
+    "blogWebpTitle": "WebP 图片怎么去背景？免费在线工具 + 完整教程 | BG-Zero",
+    "blogWebpDescription": "详细教程教你给 WebP 格式图片去背景。无需转换格式，直接上传处理。BG-Zero 原生支持 WebP，100% 免费、本地处理、不上传图片。",
+    "blogPrivacyTitle": "不上传图片也能抠图？100% 本地处理的 AI 去背景工具 | BG-Zero",
+    "blogPrivacyDescription": "寻找不上传图片的抠图工具？BG-Zero 100% 在浏览器本地处理，图片不离开设备。免费、无水印、支持离线使用。隐私安全的 AI 去背景方案。"
   },
   "faq": {
     "sectionTitle": "常见问题",
@@ -591,6 +596,38 @@
     "video_q4": {
       "question": "哪些工具可以实时替换视频背景？",
       "answer": "OBS Studio（免费开源）支持虚拟背景，Zoom/Teams 内置视频背景替换，剪映/CapCut 提供后期视频抠像功能。对于专业需求，Adobe Premiere 的 Roto Brush 和 After Effects 的 RotoBrush 效果最佳。"
+    },
+    "webp_q1": {
+      "question": "BG-Zero 支持直接处理 WebP 图片吗？",
+      "answer": "完全支持。BG-Zero 原生兼容 WebP 格式，你可以直接上传 .webp 文件进行背景去除，无需先转换为 JPG 或 PNG。同时也支持 JPG、PNG、BMP 等常见格式。"
+    },
+    "webp_q2": {
+      "question": "WebP 去背景后输出什么格式？",
+      "answer": "去背景后统一导出为透明 PNG 文件。PNG 支持 Alpha 透明通道，可以完美保留去除背景后的透明区域。导出时保持原始分辨率，不做画质压缩。"
+    },
+    "webp_q3": {
+      "question": "WebP 图片去背景需要付费吗？",
+      "answer": "完全免费。BG-Zero 不限制使用次数，不添加水印，不收取任何费用。你可以无限次处理 WebP 图片，所有操作在浏览器本地完成。"
+    },
+    "webp_q4": {
+      "question": "处理 WebP 图片会上传到服务器吗？",
+      "answer": "不会。BG-Zero 的所有 AI 处理都在你的浏览器本地运行（基于 WebAssembly 技术），WebP 图片从不离开你的设备。这对包含隐私信息的图片来说是最安全的处理方式。"
+    },
+    "privacy_q1": {
+      "question": "BG-Zero 真的不上传图片吗？怎么验证？",
+      "answer": "BG-Zero 是开源项目（AGPL-3.0），你可以查看源代码确认没有图片上传逻辑。此外，你可以在浏览器开发者工具的 Network 面板中监控 — 处理图片时不会有任何包含图片数据的网络请求发出。甚至可以断网后测试，处理功能完全正常。"
+    },
+    "privacy_q2": {
+      "question": "本地处理的效果和云端工具比怎么样？",
+      "answer": "BG-Zero 提供三种 AI 引擎，其中 Transformers.js（RMBG-1.4）的效果与 remove.bg 等云端工具接近，尤其擅长人像和复杂边缘处理。本地处理不意味着效果打折扣 — 使用的是同级别的 AI 模型，只是运行位置从云端移到了你的设备。"
+    },
+    "privacy_q3": {
+      "question": "本地处理对设备性能有要求吗？",
+      "answer": "imgly 引擎兼容所有现代浏览器，对设备要求低。Transformers.js 需要 Chrome 113+ 的 WebGPU 支持以获得最佳性能。rembg-web 有多种模型大小可选（4.7MB-176MB），可根据设备性能灵活选择。一般来说，近 3 年内的电脑和手机都能流畅运行。"
+    },
+    "privacy_q4": {
+      "question": "企业用户可以在内网环境使用 BG-Zero 吗？",
+      "answer": "可以。首次访问时需要联网下载 AI 模型文件，之后模型会缓存在浏览器中。后续使用完全离线，不需要任何网络连接。企业也可以自行部署 BG-Zero（开源代码），在完全隔离的内网环境中运行。"
     }
   },
   "compare": {
@@ -894,6 +931,16 @@
       "title": "视频去背景完全指南 — 方法、工具与技巧 (2026)",
       "summary": "全面介绍视频去背景的三种方法，对比主流工具，附截帧去背景教程。",
       "date": "2026-04-28"
+    },
+    "webpRemoveBg": {
+      "title": "WebP 图片怎么去背景？免费在线工具 + 完整教程",
+      "summary": "无需转换格式，直接给 WebP 图片去背景。原生支持、免费、本地处理。",
+      "date": "2026-04-27"
+    },
+    "privacyRemover": {
+      "title": "不上传图片也能抠图？100% 本地处理的 AI 去背景工具",
+      "summary": "图片不离开设备的隐私安全抠图方案。基于 WebAssembly 本地 AI 处理。",
+      "date": "2026-04-27"
     }
   },
   "blogHowToRemoveBg": {
@@ -1049,6 +1096,106 @@
     "faqSub": "关于视频背景去除你需要知道的",
     "ctaTitle": "先试试图片去背景",
     "ctaSub": "BG-Zero 目前支持图片去背景，视频功能即将到来",
+    "ctaButton": "开始去背景"
+  },
+  "blogWebp": {
+    "heading": "WebP 图片怎么去背景？免费在线工具 + 完整教程",
+    "heroSub": "无需转换格式，直接给 WebP 图片去除背景。BG-Zero 原生支持 WebP 输入，100% 免费且本地处理。",
+    "whatTitle": "什么是 WebP 格式？为什么越来越多图片用它？",
+    "whatDesc": "WebP 是 Google 开发的现代图片格式，相比 JPG 和 PNG 文件体积更小、加载更快，同时保持出色的画质。目前 Chrome、Safari、Firefox、Edge 等主流浏览器都已支持 WebP。越来越多网站（尤其是电商平台、社交媒体）默认使用 WebP 格式来提升页面加载速度。当你从网站保存图片或截图时，经常会发现下载到的是 .webp 文件。",
+    "problemTitle": "WebP 图片去背景的常见问题",
+    "problemDesc": "虽然 WebP 使用广泛，但很多图片处理工具对它的支持并不好：",
+    "problem1": "不少在线抠图工具只接受 JPG 和 PNG，上传 WebP 会报错",
+    "problem2": "有些工具要求你先将 WebP 转换为 JPG/PNG，再进行去背景操作",
+    "problem3": "格式转换过程中可能损失画质，增加额外步骤",
+    "problem4": "Photoshop 早期版本不原生支持 WebP（需要安装插件）",
+    "problemSolution": "BG-Zero 原生支持 WebP 格式 — 直接上传，无需任何转换。AI 自动识别主体并去除背景，导出透明 PNG。",
+    "tutorialTitle": "用 BG-Zero 给 WebP 图片去背景：3 步教程",
+    "step1Title": "第一步：上传 WebP 图片",
+    "step1Desc": "访问 BG-Zero 自动模式页面，直接拖拽或点击上传你的 .webp 文件。无需转换格式，BG-Zero 原生识别 WebP。同时也支持 JPG、PNG、BMP 格式，单张最大 25MB。",
+    "step2Title": "第二步：选择 AI 引擎并处理",
+    "step2Desc": "推荐使用 imgly 引擎快速处理（约 40MB，兼容所有浏览器）。对质量要求高的场景可选 Transformers.js（效果最佳，需 WebGPU）。点击「开始擦除」，AI 约 5 秒完成处理。",
+    "step3Title": "第三步：预览并下载透明 PNG",
+    "step3Desc": "处理完成后即时预览效果。满意后一键下载透明 PNG 文件。导出的 PNG 保持原始分辨率，无水印、无压缩。你可以继续上传下一张 WebP 图片，无数量限制。",
+    "enginesTitle": "三种 AI 引擎处理 WebP 的效果对比",
+    "enginesDesc": "三种引擎都完整支持 WebP 输入，但各有特点：",
+    "engine1": "imgly (IS-Net) — 模型约 40MB，处理速度最快，兼容所有现代浏览器。通用场景效果良好，适合快速批量处理 WebP 图片。",
+    "engine2": "Transformers.js (RMBG-1.4) — 模型约 176MB，需要 Chrome 113+ 的 WebGPU 支持。边缘处理效果最精细，尤其擅长头发丝、半透明物体等复杂场景。",
+    "engine3": "rembg-web — 提供 7+ 种模型（4.7MB 起），包含人像专用、动漫专用等选项。MIT 许可可商用，灵活适配不同 WebP 图片类型。",
+    "exportTitle": "WebP 去背景后的格式说明",
+    "exportDesc": "BG-Zero 将 WebP 输入处理后，统一导出为透明背景的 PNG 文件。这样做有几个好处：",
+    "export1": "PNG 支持透明通道（Alpha），去背景后的透明区域完美保留",
+    "export2": "PNG 是最通用的透明图片格式，所有设计工具和平台都支持",
+    "export3": "导出时保持原始分辨率，不做缩放或画质压缩",
+    "export4": "如需最终转回 WebP（减小体积），可在其他工具中将 PNG 转为 WebP",
+    "faqTitle": "WebP 去背景常见问题",
+    "faqSub": "关于 WebP 图片去背景你需要知道的",
+    "ctaTitle": "立即给 WebP 图片去背景",
+    "ctaSub": "无需转换格式，上传即处理。完全免费、本地运行。",
+    "ctaButton": "开始去背景"
+  },
+  "blogPrivacy": {
+    "heading": "不上传图片也能抠图？100% 本地处理的 AI 去背景工具",
+    "heroSub": "你的图片从不离开设备。BG-Zero 使用浏览器端 AI 技术在本地完成所有处理，是目前唯一真正保护隐私的免费抠图工具。",
+    "problemTitle": "在线抠图的隐私隐患：你的图片去了哪里？",
+    "problemDesc": "当你使用 remove.bg、iLoveIMG 等在线抠图工具时，图片会被上传到它们的云端服务器进行处理。这意味着：",
+    "problem1": "你的个人照片（证件照、家庭照片）经过第三方服务器",
+    "problem2": "敏感商业图片（产品设计、未发布素材）存在泄露风险",
+    "problem3": "医疗影像、法律文件等机密图片可能被存储或用于模型训练",
+    "problem4": "即使服务商承诺删除，你无法验证图片是否真的被彻底清除",
+    "problem5": "在 GDPR、中国个人信息保护法等法规下，上传个人图片可能涉及合规风险",
+    "solutionTitle": "BG-Zero 的方案：100% 浏览器本地处理",
+    "solutionDesc": "BG-Zero 采用完全不同的技术路线。我们不运行任何图片处理服务器 — 所有 AI 模型都通过 WebAssembly 和 WebGPU 技术直接在你的浏览器中运行。",
+    "howTitle": "本地处理是如何实现的？",
+    "howDesc": "BG-Zero 的技术架构确保了图片从始至终不离开你的设备：",
+    "how1Title": "模型下载到浏览器",
+    "how1Desc": "首次使用时，AI 模型文件（40MB-176MB）会下载到你的浏览器缓存中。之后的使用无需再次下载。",
+    "how2Title": "WebAssembly 本地推理",
+    "how2Desc": "图片处理完全在浏览器的 WebAssembly 沙箱中运行，利用你设备的 CPU/GPU 算力。没有网络请求发送你的图片。",
+    "how3Title": "结果留在设备上",
+    "how3Desc": "处理结果直接在浏览器中生成，你下载的透明 PNG 文件从未经过任何服务器。",
+    "how4Title": "支持离线使用",
+    "how4Desc": "模型缓存后，即使断开网络也能正常处理图片。这是云端工具做不到的。",
+    "compareTitle": "本地处理 vs 云端处理：隐私对比",
+    "compareCol1": "对比维度",
+    "compareCol2": "BG-Zero（本地）",
+    "compareCol3": "云端抠图工具",
+    "compare1Dim": "图片是否上传",
+    "compare1Local": "从不上传",
+    "compare1Cloud": "必须上传到服务器",
+    "compare2Dim": "服务器能否查看图片",
+    "compare2Local": "没有服务器参与",
+    "compare2Cloud": "服务商可以访问",
+    "compare3Dim": "图片可能被存储",
+    "compare3Local": "不可能",
+    "compare3Cloud": "取决于服务商政策",
+    "compare4Dim": "用于 AI 训练的风险",
+    "compare4Local": "零风险",
+    "compare4Cloud": "部分服务商会使用",
+    "compare5Dim": "离线可用",
+    "compare5Local": "支持",
+    "compare5Cloud": "不支持",
+    "compare6Dim": "GDPR / 个保法合规",
+    "compare6Local": "天然合规",
+    "compare6Cloud": "需审查隐私政策",
+    "scenariosTitle": "哪些场景需要本地处理？",
+    "scenariosDesc": "如果你处理的图片属于以下类别，本地处理不是可选项，而是必须：",
+    "scenario1": "证件照和身份证件 — 包含姓名、照片等个人身份信息",
+    "scenario2": "医疗影像 — 受严格的隐私法规保护",
+    "scenario3": "未发布的商业素材 — 产品设计图、营销物料",
+    "scenario4": "儿童照片 — 各国法律对儿童图片有特殊保护",
+    "scenario5": "法律文件 — 合同、证据材料中的图片",
+    "scenario6": "企业内部图片 — 内网环境可能禁止外传",
+    "techTitle": "BG-Zero 的技术保障",
+    "tech1": "开源代码（AGPL-3.0）— 任何人可以审计代码验证隐私承诺",
+    "tech2": "无服务器架构 — 我们没有接收图片的 API 端点",
+    "tech3": "Content Security Policy — 浏览器级别阻止图片外传",
+    "tech4": "WebAssembly 沙箱 — AI 推理在隔离环境中运行",
+    "tech5": "三种引擎可选 — imgly、Transformers.js、rembg-web 均支持本地运行",
+    "faqTitle": "隐私去背景常见问题",
+    "faqSub": "关于不上传图片的抠图工具你需要知道的",
+    "ctaTitle": "试试真正保护隐私的抠图工具",
+    "ctaSub": "图片不离开设备。免费、无水印、支持离线。",
     "ctaButton": "开始去背景"
   },
   "legal": {

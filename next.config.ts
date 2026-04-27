@@ -75,6 +75,21 @@ const nextConfig: NextConfig = {
           { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
         ],
       },
+      // Sitemap & robots — ensure correct Content-Type for search engines
+      {
+        source: "/sitemap.xml",
+        headers: [
+          { key: "Content-Type", value: "application/xml; charset=utf-8" },
+          { key: "Cache-Control", value: "public, max-age=3600, stale-while-revalidate=86400" },
+        ],
+      },
+      {
+        source: "/robots.txt",
+        headers: [
+          { key: "Content-Type", value: "text/plain; charset=utf-8" },
+          { key: "Cache-Control", value: "public, max-age=3600, stale-while-revalidate=86400" },
+        ],
+      },
       // OG images — week-long cache, reduces crawler & social scraper hits
       {
         source: "/og/:path*",

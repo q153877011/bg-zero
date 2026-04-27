@@ -2,6 +2,7 @@
   "common": {
     "autoRemove": "Auto Remove",
     "manualRemove": "Manual Remove",
+    "blog": "Blog",
     "bgZero": "BG-Zero",
     "reUpload": "Re-upload",
     "downloadPng": "Download PNG",
@@ -467,7 +468,11 @@
     "blogEcommerceTitle": "E-commerce Product White Background Tutorial — Free Batch Processing | BG-Zero",
     "blogEcommerceDescription": "Learn to create e-commerce product white background photos with AI for free. Covers Amazon, Shopify platform specs and advanced tips.",
     "blogVideoTitle": "Video Background Removal Complete Guide — Methods, Tools & Tips (2026) | BG-Zero",
-    "blogVideoDescription": "Complete guide to video background removal: real-time replacement, post-production, AI frame-by-frame processing. Compare OBS, Zoom, Premiere and more."
+    "blogVideoDescription": "Complete guide to video background removal: real-time replacement, post-production, AI frame-by-frame processing. Compare OBS, Zoom, Premiere and more.",
+    "blogWebpTitle": "How to Remove Background from WebP Images — Free Online Tool + Guide | BG-Zero",
+    "blogWebpDescription": "Step-by-step tutorial on removing backgrounds from WebP images. No format conversion needed. BG-Zero natively supports WebP — 100% free, local processing, no upload.",
+    "blogPrivacyTitle": "Remove Backgrounds Without Uploading — 100% Local AI Tool | BG-Zero",
+    "blogPrivacyDescription": "Looking for a background remover that doesn't upload your images? BG-Zero processes everything locally in your browser. Free, no watermark, works offline. The private AI background removal solution."
   },
   "faq": {
     "sectionTitle": "Frequently Asked Questions",
@@ -591,6 +596,38 @@
     "video_q4": {
       "question": "Which tools support real-time video background replacement?",
       "answer": "OBS Studio (free, open source) supports virtual backgrounds. Zoom/Teams have built-in video background replacement. CapCut offers post-production video cutout. For professional needs, Adobe Premiere's Roto Brush and After Effects deliver the best results."
+    },
+    "webp_q1": {
+      "question": "Does BG-Zero support WebP images directly?",
+      "answer": "Yes, fully supported. BG-Zero natively handles WebP format — upload .webp files directly for background removal without converting to JPG or PNG first. Also supports JPG, PNG, and BMP."
+    },
+    "webp_q2": {
+      "question": "What format is the output after removing a WebP background?",
+      "answer": "The output is always a transparent PNG file. PNG supports alpha transparency to perfectly preserve removed background areas. The export maintains original resolution with no quality compression."
+    },
+    "webp_q3": {
+      "question": "Is removing backgrounds from WebP images free?",
+      "answer": "Completely free. BG-Zero has no usage limits, no watermarks, and no fees. Process as many WebP images as you want — all operations run locally in your browser."
+    },
+    "webp_q4": {
+      "question": "Are my WebP images uploaded to a server during processing?",
+      "answer": "Never. All AI processing runs locally in your browser using WebAssembly technology. Your WebP images never leave your device — the safest approach for images containing private information."
+    },
+    "privacy_q1": {
+      "question": "Does BG-Zero really not upload images? How can I verify?",
+      "answer": "BG-Zero is open source (AGPL-3.0) — you can inspect the source code to confirm there's no image upload logic. You can also monitor the Network tab in your browser's developer tools — no network requests containing image data are sent during processing. You can even disconnect from the internet and test — processing works perfectly offline."
+    },
+    "privacy_q2": {
+      "question": "How does local processing quality compare to cloud tools?",
+      "answer": "BG-Zero offers three AI engines, and the Transformers.js (RMBG-1.4) engine delivers quality comparable to cloud tools like remove.bg, especially for portraits and complex edges. Local processing doesn't mean lower quality — we use the same caliber of AI models, just running on your device instead of a remote server."
+    },
+    "privacy_q3": {
+      "question": "Does local processing require a powerful device?",
+      "answer": "The imgly engine works in all modern browsers with modest hardware requirements. Transformers.js needs Chrome 113+ with WebGPU for best performance. rembg-web offers multiple model sizes (4.7MB–176MB) for flexible device adaptation. Generally, any computer or phone from the last 3 years runs smoothly."
+    },
+    "privacy_q4": {
+      "question": "Can enterprise users run BG-Zero on an internal network?",
+      "answer": "Yes. The first visit requires internet to download AI model files, which are then cached in the browser. All subsequent use is fully offline — no network connection needed. Enterprises can also self-host BG-Zero (open source) on a completely isolated intranet."
     }
   },
   "compare": {
@@ -894,6 +931,16 @@
       "title": "Video Background Removal Complete Guide — Methods, Tools & Tips (2026)",
       "summary": "Three methods for video background removal, comparing popular tools with frame-by-frame tutorial.",
       "date": "2026-04-28"
+    },
+    "webpRemoveBg": {
+      "title": "How to Remove Background from WebP Images — Free Online Tool + Guide",
+      "summary": "No format conversion needed. Remove backgrounds from WebP images directly — free, local processing.",
+      "date": "2026-04-27"
+    },
+    "privacyRemover": {
+      "title": "Remove Backgrounds Without Uploading — 100% Local AI Processing",
+      "summary": "Your images never leave your device. Privacy-first AI background removal powered by WebAssembly.",
+      "date": "2026-04-27"
     }
   },
   "blogHowToRemoveBg": {
@@ -1050,6 +1097,106 @@
     "ctaTitle": "Try Image Background Removal First",
     "ctaSub": "BG-Zero currently supports images — video features coming soon",
     "ctaButton": "Start Removing Backgrounds"
+  },
+  "blogWebp": {
+    "heading": "How to Remove Background from WebP Images — Free Online Tool + Complete Guide",
+    "heroSub": "No format conversion needed — upload WebP images directly for background removal. BG-Zero natively supports WebP, 100% free and local processing.",
+    "whatTitle": "What Is WebP? Why Are More Images Using This Format?",
+    "whatDesc": "WebP is a modern image format developed by Google that delivers smaller file sizes and faster loading compared to JPG and PNG, while maintaining excellent quality. All major browsers (Chrome, Safari, Firefox, Edge) now support WebP. More and more websites — especially e-commerce platforms and social media — use WebP by default for faster page loads. When you save images from websites or take screenshots, you'll often find they're in .webp format.",
+    "problemTitle": "Common Problems with WebP Background Removal",
+    "problemDesc": "While WebP is widely used, many image processing tools don't support it well:",
+    "problem1": "Many online background removers only accept JPG and PNG — uploading WebP causes errors",
+    "problem2": "Some tools require converting WebP to JPG/PNG first before removing the background",
+    "problem3": "Format conversion may lose quality and adds extra steps to your workflow",
+    "problem4": "Older versions of Photoshop don't natively support WebP (plugins required)",
+    "problemSolution": "BG-Zero natively supports WebP — upload directly, no conversion needed. AI automatically detects the subject and removes the background, exporting as transparent PNG.",
+    "tutorialTitle": "Remove Background from WebP with BG-Zero: 3-Step Tutorial",
+    "step1Title": "Step 1: Upload Your WebP Image",
+    "step1Desc": "Visit the BG-Zero auto mode page and drag-and-drop or click to upload your .webp file. No format conversion required — BG-Zero natively recognizes WebP. Also supports JPG, PNG, and BMP, up to 25MB per image.",
+    "step2Title": "Step 2: Choose an AI Engine and Process",
+    "step2Desc": "Use imgly engine for quick processing (~40MB, works in all browsers). For higher quality, choose Transformers.js (best results, requires WebGPU). Click 'Start' — AI completes processing in about 5 seconds.",
+    "step3Title": "Step 3: Preview and Download Transparent PNG",
+    "step3Desc": "Preview the result instantly. Download the transparent PNG with one click. The output maintains original resolution with no watermark or compression. Upload the next WebP image — no quantity limits.",
+    "enginesTitle": "Three AI Engines for WebP: A Comparison",
+    "enginesDesc": "All three engines fully support WebP input, each with unique strengths:",
+    "engine1": "imgly (IS-Net) — ~40MB model, fastest processing, works in all modern browsers. Good general-purpose results, ideal for quick batch processing of WebP images.",
+    "engine2": "Transformers.js (RMBG-1.4) — ~176MB model, requires Chrome 113+ with WebGPU. Finest edge processing, especially for hair, semi-transparent objects, and complex scenes.",
+    "engine3": "rembg-web — 7+ models available (from 4.7MB), including portrait-specific, anime-specific, and more. MIT licensed for commercial use, flexible for different WebP image types.",
+    "exportTitle": "WebP Background Removal: Output Format Explained",
+    "exportDesc": "After processing WebP input, BG-Zero exports as transparent PNG. Here's why:",
+    "export1": "PNG supports alpha transparency — removed background areas are perfectly preserved",
+    "export2": "PNG is the most universal transparent image format — supported by all tools and platforms",
+    "export3": "Output maintains original resolution with no scaling or quality compression",
+    "export4": "If you need WebP output (smaller file size), convert the PNG back to WebP in any editor",
+    "faqTitle": "WebP Background Removal FAQ",
+    "faqSub": "Everything you need to know about removing backgrounds from WebP images",
+    "ctaTitle": "Remove Background from WebP Images Now",
+    "ctaSub": "No format conversion needed. Upload and process. 100% free, runs locally.",
+    "ctaButton": "Start Removing Background"
+  },
+  "blogPrivacy": {
+    "heading": "Remove Backgrounds Without Uploading — 100% Local AI Processing",
+    "heroSub": "Your images never leave your device. BG-Zero uses browser-based AI to process everything locally — the only truly private free background remover available today.",
+    "problemTitle": "The Privacy Problem with Online Background Removers",
+    "problemDesc": "When you use online tools like remove.bg or iLoveIMG, your images are uploaded to their cloud servers for processing. This means:",
+    "problem1": "Your personal photos (ID photos, family pictures) pass through third-party servers",
+    "problem2": "Sensitive business images (product designs, unreleased materials) face leak risks",
+    "problem3": "Medical images, legal documents, and confidential files may be stored or used for model training",
+    "problem4": "Even with deletion promises, you can't verify images are truly purged",
+    "problem5": "Under GDPR, CCPA, and other privacy laws, uploading personal images may create compliance risks",
+    "solutionTitle": "BG-Zero's Approach: 100% Browser-Local Processing",
+    "solutionDesc": "BG-Zero takes a fundamentally different approach. We don't run any image processing servers — all AI models run directly in your browser via WebAssembly and WebGPU technology.",
+    "howTitle": "How Does Local Processing Work?",
+    "howDesc": "BG-Zero's architecture ensures images never leave your device from start to finish:",
+    "how1Title": "Models Download to Your Browser",
+    "how1Desc": "On first use, AI model files (40MB–176MB) download to your browser cache. No re-download needed after that.",
+    "how2Title": "WebAssembly Local Inference",
+    "how2Desc": "Image processing runs entirely in the browser's WebAssembly sandbox, using your device's CPU/GPU. No network requests send your images anywhere.",
+    "how3Title": "Results Stay on Your Device",
+    "how3Desc": "The processed transparent PNG is generated directly in your browser. The file you download has never touched any server.",
+    "how4Title": "Works Offline",
+    "how4Desc": "Once models are cached, you can process images without any internet connection. Cloud tools can't do this.",
+    "compareTitle": "Local vs Cloud Processing: Privacy Comparison",
+    "compareCol1": "Dimension",
+    "compareCol2": "BG-Zero (Local)",
+    "compareCol3": "Cloud Background Removers",
+    "compare1Dim": "Image uploaded?",
+    "compare1Local": "Never",
+    "compare1Cloud": "Must upload to servers",
+    "compare2Dim": "Server can view images?",
+    "compare2Local": "No server involved",
+    "compare2Cloud": "Provider has access",
+    "compare3Dim": "Images may be stored?",
+    "compare3Local": "Impossible",
+    "compare3Cloud": "Depends on provider policy",
+    "compare4Dim": "AI training risk?",
+    "compare4Local": "Zero risk",
+    "compare4Cloud": "Some providers use uploads",
+    "compare5Dim": "Works offline?",
+    "compare5Local": "Yes",
+    "compare5Cloud": "No",
+    "compare6Dim": "GDPR / CCPA compliant?",
+    "compare6Local": "Compliant by design",
+    "compare6Cloud": "Requires policy review",
+    "scenariosTitle": "When Is Local Processing Essential?",
+    "scenariosDesc": "If your images fall into these categories, local processing isn't optional — it's a requirement:",
+    "scenario1": "ID photos and identity documents — contain personal identification information",
+    "scenario2": "Medical images — protected by strict privacy regulations (HIPAA, etc.)",
+    "scenario3": "Unreleased commercial assets — product designs, marketing materials",
+    "scenario4": "Children's photos — special legal protections in most jurisdictions",
+    "scenario5": "Legal documents — contracts, evidence materials with embedded images",
+    "scenario6": "Internal corporate images — may be restricted from external transmission",
+    "techTitle": "BG-Zero's Technical Guarantees",
+    "tech1": "Open source code (AGPL-3.0) — anyone can audit the code to verify privacy claims",
+    "tech2": "No server infrastructure — we have no API endpoint that receives images",
+    "tech3": "Content Security Policy — browser-level prevention of image exfiltration",
+    "tech4": "WebAssembly sandbox — AI inference runs in an isolated environment",
+    "tech5": "Three engine options — imgly, Transformers.js, rembg-web all run locally",
+    "faqTitle": "Private Background Removal FAQ",
+    "faqSub": "What you need to know about removing backgrounds without uploading",
+    "ctaTitle": "Try the Truly Private Background Remover",
+    "ctaSub": "Images never leave your device. Free, no watermark, works offline.",
+    "ctaButton": "Start Removing Background"
   },
   "legal": {
     "privacyPolicy": "Privacy Policy",
