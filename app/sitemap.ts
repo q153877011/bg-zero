@@ -28,8 +28,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = []
 
   for (const { path: p, priority, changeFrequency } of paths) {
+    // English version (default locale, no prefix)
     entries.push({
       url: `${siteConfig.domain}${p}`,
+      lastModified: now,
+      changeFrequency,
+      priority,
+      alternates: {
+        languages: {
+          'en-US': `${siteConfig.domain}${p}`,
+          'zh-CN': `${siteConfig.domain}/zh${p === '/' ? '' : p}`,
+        },
+      },
+    })
+
+    // Chinese version (with /zh prefix)
+    entries.push({
+      url: `${siteConfig.domain}/zh${p === '/' ? '' : p}`,
       lastModified: now,
       changeFrequency,
       priority,
